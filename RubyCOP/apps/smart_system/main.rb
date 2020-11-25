@@ -6,9 +6,6 @@ require_relative '../../src/bootstrap'
 #
 # Script to launch the app
 #
-# Author: Benoît Duhoux
-# Date: 2020
-#
 if $PROGRAM_NAME == __FILE__
-  SmartEShop.run()
+  SmartSystem.run() # TODO use the correct classname
 end
