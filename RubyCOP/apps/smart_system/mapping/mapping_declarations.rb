@@ -28,19 +28,20 @@ class AppMappingDeclaration < MappingDeclaration
 				AppFeatureDeclaration.instance.display_scientific_keys_feature(),
 			],
  
-			##############################################################################################
+            ##############################################################################################
+            
 			[
                 AppContextDeclaration.instance.normal_user_context()
             ] =>
             [
-                #AppFeatureDeclaration.instance.display_calculator_feature(),
+                AppFeatureDeclaration.instance.display_set_low_scale_feature(),
             ],
  
             [
                 AppContextDeclaration.instance.old_context()
             ] =>
             [
-				AppFeatureDeclaration.instance.display_big_calculator_feature(),
+				AppFeatureDeclaration.instance.display_set_high_scale_feature(),
 			],
  
             ##############################################################################################
@@ -49,14 +50,14 @@ class AppMappingDeclaration < MappingDeclaration
                 AppContextDeclaration.instance.normal_usage_context()
             ] =>
             [
-                AppFeatureDeclaration.instance.memory_feature(),
+                AppFeatureDeclaration.instance.arrows_feature(),
             ],
   
             [
                  AppContextDeclaration.instance.exam_context()
             ] =>
             [
-                #AppFeatureDeclaration.instance.memory_feature(),
+                AppFeatureDeclaration.instance.arrows_feature(),
             ]
         }
     end
