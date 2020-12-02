@@ -21,9 +21,36 @@ class AppFeatureDeclaration < FeatureDeclaration
 		_define_features_about_memory()
 		_define_features_about_size()
 
-		@root_feature.add_relation(:Mandatory,
-															 [@display_catalogue_feature, @display_product_information_feature])
-		@root_feature.add_relation(:Optional, [@filter_products_feature])
+		@root_feature.add_relation(:Mandatory, [@display_keys_feature])
+		@root_feature.add_relation(:Optional, [@display_arrows_feature, @display_size_feature])
 	end
 
+	private 
+
+	def _define_features_about_keys()
+		@display_keys_feature = AbstractFeature.new('DisplayKeys')
+
+
+		@display_calculator_feature = Feature.new('DisplayCalculator', ['KeysModel'])
+		@display_additional_keys_feature = Feature.new('DisplayAddKeys', ['KeysModel']) # Classes dans le skeleton 
+
+		
+		@display_keys_feature.add_relation(:Mandatory, [@display_calculator_feature])
+		@display_keys_feature.add_relation(:Optional, [@display_additional_keys_feature])
+	end
+
+	def _define_features_about_memory()
+		@display_arrows_feature = Feature.new('DisplayArrows')
+	end
+
+	def _define_features_about_size()
+		@display_size_feature = AbstractFeature.new('DisplaySize')
+
+
+		@set_scale_high_feature = Feature.new('ScaleHigh', [''])
+		@set_scale_low_feature = Feature.new('ScaleLow', ['']) # Classes dans le skeleton 
+
+		
+		@display_size_feature.add_relation(:Alternative, [@set_scale_high_feature, @set_scale_low_feature])
+	end
 end

@@ -37,6 +37,7 @@ class AppContextDeclaration < ContextDeclaration
 		@user_context = AbstractContext.new('User')
 		@normal_user_context = Context.new('Normal_User')
 		@old_context = Context.new('Old')
+		@user_context.strategy_ico_mandatory_parent = DefaultEntityStrategyInCaseOfMandatoryParent.new(@normal_user_context) # ICI LE CONTEXT 
 		@user_context.add_relation(:Alternative, [@lambda_context, @old_context])
 	end
 
@@ -44,6 +45,7 @@ class AppContextDeclaration < ContextDeclaration
 		@usage_context = AbstractContext.new('Usage')
 		@normal_usage_context = Context.new('Normal_Usage')
 		@exam_context = Context.new('Exam')
+		@usage_context.strategy_ico_mandatory_parent = DefaultEntityStrategyInCaseOfMandatoryParent.new(@normal_usage_context) # ICI LE CONTEXT 
 		@usage_context.add_relation(:Alternative, [@normal_mode_context, @exam_context])
 	end
 

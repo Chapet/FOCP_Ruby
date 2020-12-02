@@ -50,7 +50,7 @@ class AppMappingDeclaration < MappingDeclaration
                 AppContextDeclaration.instance.normal_usage_context()
             ] =>
             [
-                AppFeatureDeclaration.instance.arrows_feature(),
+                AppFeatureDeclaration.instance.not_arrows_feature(),
             ],
   
             [
