@@ -8,11 +8,14 @@ module CodeExecution
       global_feature_module = Module.find_feature_module(feature.name)
       global_feature_module.find_all_sub_modules().each do
         |feature_sub_module|
-        targeted_class = Class.find_class(feature_sub_module.symbol_of_targeted_class())
-        concerned_instances = ObjectSpace.each_object(targeted_class)
-        concerned_instances.each do
-          |instance|
-          _run_code(code_identifier, instance, feature_sub_module)
+        unless feature_sub_module.send(code_identifier).nil?()
+          targeted_class = Class.find_class(feature_sub_module.symbol_of_targeted_class())
+          # concerned_instances = ObjectSpace.each_object(targeted_class)
+          concerned_instances = FBCOObjectSpace.instance.get_objects(targeted_class)
+          concerned_instances.each do
+            |instance|
+            _run_code(code_identifier, instance, feature_sub_module)
+          end
         end
       end
     end
@@ -23,11 +26,9 @@ module CodeExecution
 
   def _run_code(code_identifier, instance, feature_module)
     methods = feature_module.send(code_identifier)
-    unless methods.nil?()
-      methods.each do
-        |method|
-        instance.send(method)
-      end
+    methods.each do
+      |method|
+      instance.send(method)
     end
   end
 

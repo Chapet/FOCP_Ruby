@@ -40,15 +40,15 @@ class AppFeatureDeclaration < FeatureDeclaration
 	end
 
 	def _define_features_about_memory()
-		@display_arrows_feature = Feature.new('DisplayArrows')
+		@display_arrows_feature = Feature.new('DisplayArrows', ['KeysModel'])
 	end
 
 	def _define_features_about_size()
 		@display_size_feature = AbstractFeature.new('DisplaySize')
 
 
-		@set_scale_high_feature = Feature.new('ScaleHigh', [''])
-		@set_scale_low_feature = Feature.new('ScaleLow', ['']) # Classes dans le skeleton 
+		@set_scale_high_feature = Feature.new('ScaleHigh', ['KeysModel'])
+		@set_scale_low_feature = Feature.new('ScaleLow', ['KeysModel']) # Classes dans le skeleton 
 
 		
 		@display_size_feature.add_relation(:Alternative, [@set_scale_high_feature, @set_scale_low_feature])

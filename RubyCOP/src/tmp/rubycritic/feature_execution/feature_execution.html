@@ -1,0 +1,420 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Ruby Critic - Home</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- StyleSheets -->
+    <link href="../assets/stylesheets/bootstrap.min.css" media="screen, projection, print" rel="stylesheet" type="text/css">
+    <link href="../assets/stylesheets/font-awesome.min.css" media="screen, projection, print" rel="stylesheet" type="text/css">
+    <link href="../assets/stylesheets/prettify.custom_theme.css" media="screen, projection, print" rel="stylesheet" type="text/css">
+    <link href="../assets/stylesheets/application.css" media="screen, projection, print" rel="stylesheet" type="text/css">
+  </head>
+
+  <body>
+    <header class="navbar navbar-default navbar-fixed-top">
+      <a href="#menu-toggle" class="btn btn-default hidden-lg visible-sm-* hidden-md visible-xs-* pull-left" id="menu-toggle"><i class="fa fa-bars" aria-hidden="true"></i></a>
+      <a href="../overview.html"><img src="../assets/images/logo.png" alt="Ruby Critic Logo" title="Ruby Critic Logo" width="55"><span class="logo">RUBYCRITIC</span></a>
+      
+    </header>
+    <div id="wrapper">
+      <!-- Sidebar -->
+      <aside id="sidebar-wrapper">
+        <ul class="sidebar-nav">
+          <li class="sidebar-item">
+            <a href="../overview.html" class="project-nav-item overview-nav"><i class="fa fa-dashboard"></i>Overview</a>
+          </li>
+          <li class="sidebar-item">
+            <a href="../code_index.html" class="project-nav-item code-index-nav"><i class="fa fa-code"></i>Code</a>
+          </li>
+          <li class="sidebar-item">
+            <a href="../smells_index.html" class="project-nav-item smells-index-nav"><i class="fa fa-warning"></i>Smells</a>
+          </li>
+          <li class="sidebar-item">
+            <a href="../simple_cov_index.html" class="project-nav-item coverage-index-nav"><i class="fa fa-umbrella"></i>Coverage</a>
+          </li>
+        </ul>
+      </aside>
+      <!-- /#sidebar-wrapper -->
+      <div id="page-content-wrapper">
+        <div class="container-fluid">
+          <div class="row">
+  <!--Page Title -->
+  <div class="Page_Title">
+    <div class="file-time">
+      <span class="committed-at">
+        
+          Never committed
+        
+      </span>
+    </div>
+    <div>
+      <h3><small>feature_execution /</small> feature_execution.rb</h3>
+    </div>
+  </div>
+  <!--End Page Title -->
+  <div class="Content_Wrapper">
+    <!-- code detail -->
+    <div class="code-top-detail clearfix row">
+      <div class="col-md-8">
+        <div class="row">
+          <div class="col-md-1">
+            <div class="rating d big">
+              D
+            </div>
+          </div>
+          <div class="code-statistics col-md-11">
+            <div class="col-md-3">
+              <div><span class="metric">301</span><small> lines of codes</small></div>
+              <div><span class="metric">19</span><small> methods</small></div>
+            </div>
+            <div class="col-md-3">
+              <div><span class="metric">12.7</span><small> complexity/method</small></div>
+              <div><span class="metric">0</span><small> churn</small></div>
+            </div>
+            <div class="col-md-3">
+              <div><span class="metric">241.42</span><small> complexity</small></div>
+              <div><span class="metric">0</span><small> duplications</small></div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="code-tabs">
+          <ul class="nav nav-pills right-to-left">
+            <li><a href="#" id="toggle-code" class="toggle-button button">code</a></li>
+            <li class="active">
+              <a href="#" id="toggle-smells" class="toggle-button button">
+                34
+                smells
+              </a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <code class="prettyprint linenums lang-ruby file-code js-file-code">require &#39;method_source&#39;
+require &#39;singleton&#39;
+
+require_relative &#39;empty_module&#39;
+require_relative &#39;feature_execution_proxy&#39;
+require_relative &#39;invalid_alteration_error&#39;
+require_relative &#39;../application_domain/alteration&#39;
+require_relative &#39;../code_execution&#39;
+
+#
+# Class representing the behaviour of the feature execution component
+#
+# Author: Benoît Duhoux
+# Date: 2017, 2020
+#
+class FeatureExecution<ol class="nocode errors smells">  <li>    <div class="description">      <div class="heading">        <span>          <i class="fa fa-warning" aria-hidden="true"></i>          <a href="https://github.com/troessner/reek/blob/master/docs/Too-Many-Methods.md" target="_blank"><b>TooManyMethods</b></a>        </span>      </div>      <span>FeatureExecution has at least 19 methods</span>          </div>  </li></ol>
+
+  include CodeExecution
+  include FeatureExecutionProxy
+  include Singleton
+
+  def initialize()
+    @vars_store = {}
+    @proceeds_methods = {}
+  end
+
+  def execute_activation(activated_features)
+    activated_features.each {
+        |activated_feature|
+      alter(:activate, activated_feature)
+    }
+  end
+
+  def execute(to_execute)<ol class="nocode errors smells">  <li>    <div class="description">      <div class="heading">        <span>          <i class="fa fa-warning" aria-hidden="true"></i>          <a href="http://docs.seattlerb.org/flog/" target="_blank"><b>HighComplexity</b></a>        </span>      </div>      <span>FeatureExecution#execute has a flog score of 26</span>          </div>  </li>  <li>    <div class="description">      <div class="heading">        <span>          <i class="fa fa-warning" aria-hidden="true"></i>          <a href="https://github.com/troessner/reek/blob/master/docs/Too-Many-Statements.md" target="_blank"><b>TooManyStatements</b></a>        </span>      </div>      <span>FeatureExecution#execute has approx 9 statements</span>          </div>  </li></ol>
+    global_features_to_execute = {
+      :activate =&gt; [],
+      :deactivate =&gt; []
+    }
+
+    to_execute.each do
+      |action_on_feature|
+      global_features_to_execute[action_on_feature.action] &lt;&lt; action_on_feature.entity<ol class="nocode errors smells">  <li>    <div class="description">      <div class="heading">        <span>          <i class="fa fa-warning" aria-hidden="true"></i>          <a href="https://github.com/troessner/reek/blob/master/docs/Duplicate-Method-Call.md" target="_blank"><b>DuplicateMethodCall</b></a>        </span>      </div>      <span>FeatureExecution#execute calls 'action_on_feature.action' 3 times</span>              <span>Locations:</span>                  <a href="feature_execution.html#L42" class="js-smell-location">0</a>                  <a href="feature_execution.html#L43" class="js-smell-location">1</a>                  <a href="feature_execution.html#L47" class="js-smell-location">2</a>                  </div>  </li>  <li>    <div class="description">      <div class="heading">        <span>          <i class="fa fa-warning" aria-hidden="true"></i>          <a href="https://github.com/troessner/reek/blob/master/docs/Duplicate-Method-Call.md" target="_blank"><b>DuplicateMethodCall</b></a>        </span>      </div>      <span>FeatureExecution#execute calls 'action_on_feature.entity' 4 times</span>              <span>Locations:</span>                  <a href="feature_execution.html#L42" class="js-smell-location">0</a>                  <a href="feature_execution.html#L44" class="js-smell-location">1</a>                  <a href="feature_execution.html#L47" class="js-smell-location">2</a>                  <a href="feature_execution.html#L49" class="js-smell-location">3</a>                  </div>  </li>  <li>    <div class="description">      <div class="heading">        <span>          <i class="fa fa-warning" aria-hidden="true"></i>          <a href="https://github.com/troessner/reek/blob/master/docs/Feature-Envy.md" target="_blank"><b>FeatureEnvy</b></a>        </span>      </div>      <span>FeatureExecution#execute refers to 'action_on_feature' more than self (maybe move it to another class?)</span>              <span>Locations:</span>                  <a href="feature_execution.html#L42" class="js-smell-location">0</a>                  <a href="feature_execution.html#L43" class="js-smell-location">1</a>                  <a href="feature_execution.html#L44" class="js-smell-location">2</a>                  <a href="feature_execution.html#L47" class="js-smell-location">3</a>                  <a href="feature_execution.html#L49" class="js-smell-location">4</a>                  </div>  </li></ol>
+      if action_on_feature.action == :deactivate<ol class="nocode errors smells">  <li>    <div class="description">      <div class="heading">        <span>          <i class="fa fa-warning" aria-hidden="true"></i>          <a href="https://github.com/troessner/reek/blob/master/docs/Duplicate-Method-Call.md" target="_blank"><b>DuplicateMethodCall</b></a>        </span>      </div>      <span>FeatureExecution#execute calls 'action_on_feature.action' 3 times</span>              <span>Locations:</span>                  <a href="feature_execution.html#L42" class="js-smell-location">0</a>                  <a href="feature_execution.html#L43" class="js-smell-location">1</a>                  <a href="feature_execution.html#L47" class="js-smell-location">2</a>                  </div>  </li>  <li>    <div class="description">      <div class="heading">        <span>          <i class="fa fa-warning" aria-hidden="true"></i>          <a href="https://github.com/troessner/reek/blob/master/docs/Feature-Envy.md" target="_blank"><b>FeatureEnvy</b></a>        </span>      </div>      <span>FeatureExecution#execute refers to 'action_on_feature' more than self (maybe move it to another class?)</span>              <span>Locations:</span>                  <a href="feature_execution.html#L42" class="js-smell-location">0</a>                  <a href="feature_execution.html#L43" class="js-smell-location">1</a>                  <a href="feature_execution.html#L44" class="js-smell-location">2</a>                  <a href="feature_execution.html#L47" class="js-smell-location">3</a>                  <a href="feature_execution.html#L49" class="js-smell-location">4</a>                  </div>  </li></ol>
+        run_code_of_features(:epilogue, [action_on_feature.entity])<ol class="nocode errors smells">  <li>    <div class="description">      <div class="heading">        <span>          <i class="fa fa-warning" aria-hidden="true"></i>          <a href="https://github.com/troessner/reek/blob/master/docs/Duplicate-Method-Call.md" target="_blank"><b>DuplicateMethodCall</b></a>        </span>      </div>      <span>FeatureExecution#execute calls 'action_on_feature.entity' 4 times</span>              <span>Locations:</span>                  <a href="feature_execution.html#L42" class="js-smell-location">0</a>                  <a href="feature_execution.html#L44" class="js-smell-location">1</a>                  <a href="feature_execution.html#L47" class="js-smell-location">2</a>                  <a href="feature_execution.html#L49" class="js-smell-location">3</a>                  </div>  </li>  <li>    <div class="description">      <div class="heading">        <span>          <i class="fa fa-warning" aria-hidden="true"></i>          <a href="https://github.com/troessner/reek/blob/master/docs/Feature-Envy.md" target="_blank"><b>FeatureEnvy</b></a>        </span>      </div>      <span>FeatureExecution#execute refers to 'action_on_feature' more than self (maybe move it to another class?)</span>              <span>Locations:</span>                  <a href="feature_execution.html#L42" class="js-smell-location">0</a>                  <a href="feature_execution.html#L43" class="js-smell-location">1</a>                  <a href="feature_execution.html#L44" class="js-smell-location">2</a>                  <a href="feature_execution.html#L47" class="js-smell-location">3</a>                  <a href="feature_execution.html#L49" class="js-smell-location">4</a>                  </div>  </li></ol>
+      end
+      begin
+        alter(action_on_feature.action, action_on_feature.entity)<ol class="nocode errors smells">  <li>    <div class="description">      <div class="heading">        <span>          <i class="fa fa-warning" aria-hidden="true"></i>          <a href="https://github.com/troessner/reek/blob/master/docs/Duplicate-Method-Call.md" target="_blank"><b>DuplicateMethodCall</b></a>        </span>      </div>      <span>FeatureExecution#execute calls 'action_on_feature.action' 3 times</span>              <span>Locations:</span>                  <a href="feature_execution.html#L42" class="js-smell-location">0</a>                  <a href="feature_execution.html#L43" class="js-smell-location">1</a>                  <a href="feature_execution.html#L47" class="js-smell-location">2</a>                  </div>  </li>  <li>    <div class="description">      <div class="heading">        <span>          <i class="fa fa-warning" aria-hidden="true"></i>          <a href="https://github.com/troessner/reek/blob/master/docs/Duplicate-Method-Call.md" target="_blank"><b>DuplicateMethodCall</b></a>        </span>      </div>      <span>FeatureExecution#execute calls 'action_on_feature.entity' 4 times</span>              <span>Locations:</span>                  <a href="feature_execution.html#L42" class="js-smell-location">0</a>                  <a href="feature_execution.html#L44" class="js-smell-location">1</a>                  <a href="feature_execution.html#L47" class="js-smell-location">2</a>                  <a href="feature_execution.html#L49" class="js-smell-location">3</a>                  </div>  </li>  <li>    <div class="description">      <div class="heading">        <span>          <i class="fa fa-warning" aria-hidden="true"></i>          <a href="https://github.com/troessner/reek/blob/master/docs/Feature-Envy.md" target="_blank"><b>FeatureEnvy</b></a>        </span>      </div>      <span>FeatureExecution#execute refers to 'action_on_feature' more than self (maybe move it to another class?)</span>              <span>Locations:</span>                  <a href="feature_execution.html#L42" class="js-smell-location">0</a>                  <a href="feature_execution.html#L43" class="js-smell-location">1</a>                  <a href="feature_execution.html#L44" class="js-smell-location">2</a>                  <a href="feature_execution.html#L47" class="js-smell-location">3</a>                  <a href="feature_execution.html#L49" class="js-smell-location">4</a>                  </div>  </li></ol>
+      rescue InvalidAlterationError =&gt; error
+        run_code_of_features(:prologue, [action_on_feature.entity])<ol class="nocode errors smells">  <li>    <div class="description">      <div class="heading">        <span>          <i class="fa fa-warning" aria-hidden="true"></i>          <a href="https://github.com/troessner/reek/blob/master/docs/Duplicate-Method-Call.md" target="_blank"><b>DuplicateMethodCall</b></a>        </span>      </div>      <span>FeatureExecution#execute calls 'action_on_feature.entity' 4 times</span>              <span>Locations:</span>                  <a href="feature_execution.html#L42" class="js-smell-location">0</a>                  <a href="feature_execution.html#L44" class="js-smell-location">1</a>                  <a href="feature_execution.html#L47" class="js-smell-location">2</a>                  <a href="feature_execution.html#L49" class="js-smell-location">3</a>                  </div>  </li>  <li>    <div class="description">      <div class="heading">        <span>          <i class="fa fa-warning" aria-hidden="true"></i>          <a href="https://github.com/troessner/reek/blob/master/docs/Feature-Envy.md" target="_blank"><b>FeatureEnvy</b></a>        </span>      </div>      <span>FeatureExecution#execute refers to 'action_on_feature' more than self (maybe move it to another class?)</span>              <span>Locations:</span>                  <a href="feature_execution.html#L42" class="js-smell-location">0</a>                  <a href="feature_execution.html#L43" class="js-smell-location">1</a>                  <a href="feature_execution.html#L44" class="js-smell-location">2</a>                  <a href="feature_execution.html#L47" class="js-smell-location">3</a>                  <a href="feature_execution.html#L49" class="js-smell-location">4</a>                  </div>  </li></ol>
+        raise
+      end
+    end
+
+    if Bootstrap.bootstrap_done?()
+      run_code_of_features(:prologue, global_features_to_execute[:activate])
+    end
+  end
+
+  def alter(action, feature_entity)<ol class="nocode errors smells">  <li>    <div class="description">      <div class="heading">        <span>          <i class="fa fa-warning" aria-hidden="true"></i>          <a href="http://docs.seattlerb.org/flog/" target="_blank"><b>HighComplexity</b></a>        </span>      </div>      <span>FeatureExecution#alter has a flog score of 28</span>          </div>  </li>  <li>    <div class="description">      <div class="heading">        <span>          <i class="fa fa-warning" aria-hidden="true"></i>          <a href="https://github.com/troessner/reek/blob/master/docs/Too-Many-Statements.md" target="_blank"><b>TooManyStatements</b></a>        </span>      </div>      <span>FeatureExecution#alter has approx 11 statements</span>          </div>  </li></ol>
+    global_feature_module = Module.find_feature_module(feature_entity.name)
+
+    feature_sub_modules = global_feature_module.find_all_sub_modules()
+    feature_sub_modules.each do
+      |feature_sub_module|
+      if feature_entity.targeted_classes.include?(feature_sub_module.symbol_of_targeted_class().to_s())<ol class="nocode errors smells">  <li>    <div class="description">      <div class="heading">        <span>          <i class="fa fa-warning" aria-hidden="true"></i>          <a href="https://github.com/troessner/reek/blob/master/docs/Duplicate-Method-Call.md" target="_blank"><b>DuplicateMethodCall</b></a>        </span>      </div>      <span>FeatureExecution#alter calls 'feature_sub_module.symbol_of_targeted_class()' 3 times</span>              <span>Locations:</span>                  <a href="feature_execution.html#L65" class="js-smell-location">0</a>                  <a href="feature_execution.html#L66" class="js-smell-location">1</a>                  <a href="feature_execution.html#L71" class="js-smell-location">2</a>                  </div>  </li>  <li>    <div class="description">      <div class="heading">        <span>          <i class="fa fa-warning" aria-hidden="true"></i>          <a href="https://github.com/troessner/reek/blob/master/docs/Duplicate-Method-Call.md" target="_blank"><b>DuplicateMethodCall</b></a>        </span>      </div>      <span>FeatureExecution#alter calls 'feature_sub_module.symbol_of_targeted_class().to_s()' 2 times</span>              <span>Locations:</span>                  <a href="feature_execution.html#L65" class="js-smell-location">0</a>                  <a href="feature_execution.html#L71" class="js-smell-location">1</a>                  </div>  </li></ol>
+        targeted_class = Class.find_class(feature_sub_module.symbol_of_targeted_class())<ol class="nocode errors smells">  <li>    <div class="description">      <div class="heading">        <span>          <i class="fa fa-warning" aria-hidden="true"></i>          <a href="https://github.com/troessner/reek/blob/master/docs/Duplicate-Method-Call.md" target="_blank"><b>DuplicateMethodCall</b></a>        </span>      </div>      <span>FeatureExecution#alter calls 'feature_sub_module.symbol_of_targeted_class()' 3 times</span>              <span>Locations:</span>                  <a href="feature_execution.html#L65" class="js-smell-location">0</a>                  <a href="feature_execution.html#L66" class="js-smell-location">1</a>                  <a href="feature_execution.html#L71" class="js-smell-location">2</a>                  </div>  </li></ol>
+        _save_default_behaviours(targeted_class)
+        self.send(&quot;_#{action}_behaviour&quot;, feature_sub_module, targeted_class)
+        feedback_for_feature_visualiser(action, feature_sub_module, targeted_class)
+      else
+        error = &quot;You cannot #{action} the feature #{feature_sub_module.name} in the class #{feature_sub_module.symbol_of_targeted_class().to_s}.&quot;<ol class="nocode errors smells">  <li>    <div class="description">      <div class="heading">        <span>          <i class="fa fa-warning" aria-hidden="true"></i>          <a href="https://github.com/troessner/reek/blob/master/docs/Duplicate-Method-Call.md" target="_blank"><b>DuplicateMethodCall</b></a>        </span>      </div>      <span>FeatureExecution#alter calls 'feature_sub_module.symbol_of_targeted_class()' 3 times</span>              <span>Locations:</span>                  <a href="feature_execution.html#L65" class="js-smell-location">0</a>                  <a href="feature_execution.html#L66" class="js-smell-location">1</a>                  <a href="feature_execution.html#L71" class="js-smell-location">2</a>                  </div>  </li>  <li>    <div class="description">      <div class="heading">        <span>          <i class="fa fa-warning" aria-hidden="true"></i>          <a href="https://github.com/troessner/reek/blob/master/docs/Duplicate-Method-Call.md" target="_blank"><b>DuplicateMethodCall</b></a>        </span>      </div>      <span>FeatureExecution#alter calls 'feature_sub_module.symbol_of_targeted_class().to_s()' 2 times</span>              <span>Locations:</span>                  <a href="feature_execution.html#L65" class="js-smell-location">0</a>                  <a href="feature_execution.html#L71" class="js-smell-location">1</a>                  </div>  </li></ol>
+        error_feedback_for_feature_visualiser(error)
+        raise(InvalidAlterationError, error)
+      end
+    end
+
+    return feature_sub_modules
+  end
+
+  def proceed(current_instance, current_classname, current_method, *args, &amp;block)<ol class="nocode errors smells">  <li>    <div class="description">      <div class="heading">        <span>          <i class="fa fa-warning" aria-hidden="true"></i>          <a href="https://github.com/troessner/reek/blob/master/docs/Long-Parameter-List.md" target="_blank"><b>LongParameterList</b></a>        </span>      </div>      <span>FeatureExecution#proceed has 4 parameters</span>          </div>  </li>  <li>    <div class="description">      <div class="heading">        <span>          <i class="fa fa-warning" aria-hidden="true"></i>          <a href="https://github.com/troessner/reek/blob/master/docs/Too-Many-Statements.md" target="_blank"><b>TooManyStatements</b></a>        </span>      </div>      <span>FeatureExecution#proceed has approx 9 statements</span>          </div>  </li></ol>
+    current_class = Object.const_get(current_classname)
+
+    key = &quot;#{current_classname}##{current_method}&quot;
+    current_version = @proceeds_methods[key].pop()<ol class="nocode errors smells">  <li>    <div class="description">      <div class="heading">        <span>          <i class="fa fa-warning" aria-hidden="true"></i>          <a href="https://github.com/troessner/reek/blob/master/docs/Duplicate-Method-Call.md" target="_blank"><b>DuplicateMethodCall</b></a>        </span>      </div>      <span>FeatureExecution#proceed calls '@proceeds_methods[key]' 2 times</span>              <span>Locations:</span>                  <a href="feature_execution.html#L84" class="js-smell-location">0</a>                  <a href="feature_execution.html#L85" class="js-smell-location">1</a>                  </div>  </li>  <li>    <div class="description">      <div class="heading">        <span>          <i class="fa fa-warning" aria-hidden="true"></i>          <a href="https://github.com/troessner/reek/blob/master/docs/Duplicate-Method-Call.md" target="_blank"><b>DuplicateMethodCall</b></a>        </span>      </div>      <span>FeatureExecution#proceed calls '@proceeds_methods[key].pop()' 2 times</span>              <span>Locations:</span>                  <a href="feature_execution.html#L84" class="js-smell-location">0</a>                  <a href="feature_execution.html#L85" class="js-smell-location">1</a>                  </div>  </li></ol>
+    previous_version = @proceeds_methods[key].pop()<ol class="nocode errors smells">  <li>    <div class="description">      <div class="heading">        <span>          <i class="fa fa-warning" aria-hidden="true"></i>          <a href="https://github.com/troessner/reek/blob/master/docs/Duplicate-Method-Call.md" target="_blank"><b>DuplicateMethodCall</b></a>        </span>      </div>      <span>FeatureExecution#proceed calls '@proceeds_methods[key]' 2 times</span>              <span>Locations:</span>                  <a href="feature_execution.html#L84" class="js-smell-location">0</a>                  <a href="feature_execution.html#L85" class="js-smell-location">1</a>                  </div>  </li>  <li>    <div class="description">      <div class="heading">        <span>          <i class="fa fa-warning" aria-hidden="true"></i>          <a href="https://github.com/troessner/reek/blob/master/docs/Duplicate-Method-Call.md" target="_blank"><b>DuplicateMethodCall</b></a>        </span>      </div>      <span>FeatureExecution#proceed calls '@proceeds_methods[key].pop()' 2 times</span>              <span>Locations:</span>                  <a href="feature_execution.html#L84" class="js-smell-location">0</a>                  <a href="feature_execution.html#L85" class="js-smell-location">1</a>                  </div>  </li></ol>
+
+    _deploy(current_class, previous_version)
+    method_to_execute = look_up_method(current_instance, current_class, current_method)
+    res = method_to_execute.call(*args, &amp;block)
+    _deploy(current_class, current_version)
+
+    return res
+  end
+
+  # This method aims to find the method in the right class in an hierarchy of classes.
+  # (The right class is the class on which the proceed statement is executed.)
+  # Assume two classes {A, B}, where B is the subclass of A.
+  # Both classes implement a method &quot;m&quot; and B calls the super method of &quot;m&quot; before continuing its execution.
+  # Assume two features {A1, B1}, where A1 (resp. B1) adapts the behaviour of the class A (resp. B).
+  # Each of features implements an adaptation of the method &quot;m&quot;
+  # and calls the previous adaptation with the keyword &#39;proceed&#39; before executing its next statements.
+  # After activating {A1, B1}, when executing the method &quot;m&quot; on a instance of B,
+  # The stack is the following: B1, B, A1, A.
+  # Without this method, the stack of the execution would have been the following: B1, B, A1, B, A.
+  # The problem comes from we call a method &quot;m&quot; on the current instance (instance of B) during the proceed statement.
+  # So when we call &quot;m&quot; in the adaptation A1, we execute &quot;m&quot; on B and not on the concerned class (i.e. A).
+  # To solve that, we compute the difference between the ancestors of the two classes ([B] = [B, A, ...] - [A, ...]),
+  # and we loop on each ancestor to get the super method bounded to the right class (i.e. &quot;m&quot; bounded to A).
+  def look_up_method(current_instance, current_class, current_method)<ol class="nocode errors smells">  <li>    <div class="description">      <div class="heading">        <span>          <i class="fa fa-warning" aria-hidden="true"></i>          <a href="https://github.com/troessner/reek/blob/master/docs/Utility-Function.md" target="_blank"><b>UtilityFunction</b></a>        </span>      </div>      <span>FeatureExecution#look_up_method doesn't depend on instance state (maybe move it to another class?)</span>          </div>  </li></ol>
+    method_to_execute = current_instance.method(current_method)
+    if current_instance.is_a?(current_class)
+      ancestors = current_instance.class.ancestors_to(current_class)
+      ancestors.each {
+        method_to_execute = method_to_execute.super_method()
+      }
+    end
+    return method_to_execute
+  end
+
+  def search_var_in_store(current_class, ctx_var)
+    key = &quot;#{current_class}##{ctx_var}&quot;
+    res = @vars_store[key]
+    return res
+  end
+
+  def update_vars_store(current_class, ctx_var, new_val)
+    key = &quot;#{current_class}##{ctx_var}&quot;
+    @vars_store[key] = new_val
+  end
+
+  private
+
+  def _get_all_methods(klass)<ol class="nocode errors smells">  <li>    <div class="description">      <div class="heading">        <span>          <i class="fa fa-warning" aria-hidden="true"></i>          <a href="https://github.com/troessner/reek/blob/master/docs/Utility-Function.md" target="_blank"><b>UtilityFunction</b></a>        </span>      </div>      <span>FeatureExecution#_get_all_methods doesn't depend on instance state (maybe move it to another class?)</span>          </div>  </li></ol>
+    all_methods = klass.instance_methods(false)
+    begin
+      klass.instance_method(:initialize)
+      all_methods &lt;&lt; :initialize
+    rescue NameError
+    end
+    return all_methods
+  end
+
+  # Save the default behaviour when the class contains a default behaviour
+  def _save_default_behaviours(klass)
+    _get_all_methods(klass).each do
+      |method_name|
+      key = &quot;#{klass}##{method_name}&quot;
+      if !@proceeds_methods[key]
+        default_alteration = Alteration.new(klass.name, method_name, klass.instance_method(method_name))
+        @proceeds_methods[key] = [default_alteration]
+      end
+    end
+  end
+
+  def _activate_behaviour(feature_module, targeted_class)
+    _get_all_methods(feature_module).each do
+      |method_name|
+      method_code = _get_method_code(feature_module, method_name, targeted_class)
+      alteration = Alteration.new(feature_module.name, method_name, method_code)
+      _deploy(targeted_class, alteration)
+    end
+  end
+
+  def _get_method_code(feature_module, method_name, targeted_class)<ol class="nocode errors smells">  <li>    <div class="description">      <div class="heading">        <span>          <i class="fa fa-warning" aria-hidden="true"></i>          <a href="https://github.com/troessner/reek/blob/master/docs/Too-Many-Statements.md" target="_blank"><b>TooManyStatements</b></a>        </span>      </div>      <span>FeatureExecution#_get_method_code has approx 6 statements</span>          </div>  </li></ol>
+    method_code = feature_module.instance_method(method_name)
+
+    method_code_string = method_code.source()
+    if method_code_string.include?(&quot;proceed&quot;)
+      method_code_string, is_rewritten = _modify_source_code_if_needed(method_code_string, targeted_class)
+      if is_rewritten
+        EmptyModule.module_eval(method_code_string)
+        method_code = EmptyModule.instance_method(method_name)
+      end
+    end
+
+    return method_code
+  end
+
+  def _modify_source_code_if_needed(method_code_string, targeted_class)<ol class="nocode errors smells">  <li>    <div class="description">      <div class="heading">        <span>          <i class="fa fa-warning" aria-hidden="true"></i>          <a href="https://github.com/troessner/reek/blob/master/docs/Too-Many-Statements.md" target="_blank"><b>TooManyStatements</b></a>        </span>      </div>      <span>FeatureExecution#_modify_source_code_if_needed has approx 8 statements</span>          </div>  </li></ol>
+    new_code_source = &quot;&quot;
+    proceed_is_rewritten = false
+    method_code_string.lines.map(&amp;:chomp).each do
+    |method_code_line|
+      if _is_not_a_proceed_line_as_comment(method_code_line) &amp;&amp; _is_a_proceed_line(method_code_line)
+        new_code_source &lt;&lt; _modify_proceed_line(method_code_line, targeted_class)
+        proceed_is_rewritten = true
+      else
+        new_code_source &lt;&lt; method_code_line
+      end
+      new_code_source &lt;&lt; &quot;\n&quot;
+    end
+
+    return new_code_source, proceed_is_rewritten
+  end
+
+  def _is_not_a_proceed_line_as_comment(line)<ol class="nocode errors smells">  <li>    <div class="description">      <div class="heading">        <span>          <i class="fa fa-warning" aria-hidden="true"></i>          <a href="https://github.com/troessner/reek/blob/master/docs/Utility-Function.md" target="_blank"><b>UtilityFunction</b></a>        </span>      </div>      <span>FeatureExecution#_is_not_a_proceed_line_as_comment doesn't depend on instance state (maybe move it to another class?)</span>          </div>  </li></ol>
+    # This regex don&#39;t take account if the line is a comment
+    return line.strip() =~ /^(?!#[^.*\{]).*$/
+  end
+
+  def _is_a_proceed_line(line)<ol class="nocode errors smells">  <li>    <div class="description">      <div class="heading">        <span>          <i class="fa fa-warning" aria-hidden="true"></i>          <a href="https://github.com/troessner/reek/blob/master/docs/Utility-Function.md" target="_blank"><b>UtilityFunction</b></a>        </span>      </div>      <span>FeatureExecution#_is_a_proceed_line doesn't depend on instance state (maybe move it to another class?)</span>          </div>  </li></ol>
+    # This regex tests and accepts all of these following lines:
+    # 		proceed
+    # 		proceed()
+    # 		proceed(my_var)
+    # 		puts &quot;#{proceed}&quot;
+    # 		puts &quot;#{proceed()}&quot;
+    # 		puts &quot;#{proceed(my_var)}&quot;
+    # 		puts &quot;proceed = #{proceed}&quot;
+    # 		puts &quot;proceed = #{proceed(my_var, my_list)}&quot;
+    # 		my_method(proceed)
+    # 		my_method(proceed())
+    # 		my_method(proceed(my_var))
+    # and negates this kind of lines:
+    # 		puts &quot;Print before the proceed mechanism...&quot;
+    return line.include?(&quot;proceed&quot;) &amp;&amp; line.strip() =~ /^(?!puts.*).*$|^puts\s*&quot;.*#\{.*\}&quot;.*$/
+  end
+
+  def _modify_proceed_line(line, targeted_class)<ol class="nocode errors smells">  <li>    <div class="description">      <div class="heading">        <span>          <i class="fa fa-warning" aria-hidden="true"></i>          <a href="https://github.com/troessner/reek/blob/master/docs/Too-Many-Statements.md" target="_blank"><b>TooManyStatements</b></a>        </span>      </div>      <span>FeatureExecution#_modify_proceed_line has approx 9 statements</span>          </div>  </li>  <li>    <div class="description">      <div class="heading">        <span>          <i class="fa fa-warning" aria-hidden="true"></i>          <a href="https://github.com/troessner/reek/blob/master/docs/Utility-Function.md" target="_blank"><b>UtilityFunction</b></a>        </span>      </div>      <span>FeatureExecution#_modify_proceed_line doesn't depend on instance state (maybe move it to another class?)</span>          </div>  </li></ol>
+    before_proceed = line.match(/(.*)proceed.*/).captures[0]
+    proceed_args = line.match(/.*proceed\(?([a-zA-Z0-9_,&amp;\.\s]*)\)?\n?/).captures[0].strip()
+    new_code_proceed = &quot;#{before_proceed}proceed(&#39;#{targeted_class}&#39;&quot;
+    if !proceed_args.empty?()
+      new_code_proceed &lt;&lt; &quot;, #{proceed_args}&quot;
+    end
+    count_opened_parentheses = new_code_proceed.count(&quot;(&quot;)
+    count_closed_parentheses = new_code_proceed.count(&quot;)&quot;)
+    if count_opened_parentheses &gt; count_closed_parentheses
+      diff_parentheses = count_opened_parentheses - count_closed_parentheses
+      new_code_proceed &lt;&lt; &#39;)&#39; * diff_parentheses
+    end
+    return new_code_proceed
+  end
+
+  def _deactivate_behaviour(feature_module, targeted_class)<ol class="nocode errors smells">  <li>    <div class="description">      <div class="heading">        <span>          <i class="fa fa-warning" aria-hidden="true"></i>          <a href="http://docs.seattlerb.org/flog/" target="_blank"><b>HighComplexity</b></a>        </span>      </div>      <span>FeatureExecution#_deactivate_behaviour has a flog score of 50</span>          </div>  </li>  <li>    <div class="description">      <div class="heading">        <span>          <i class="fa fa-warning" aria-hidden="true"></i>          <a href="https://github.com/troessner/reek/blob/master/docs/Too-Many-Statements.md" target="_blank"><b>TooManyStatements</b></a>        </span>      </div>      <span>FeatureExecution#_deactivate_behaviour has approx 11 statements</span>          </div>  </li></ol>
+    _get_all_methods(feature_module).each do
+      |method_name|
+
+      key = &quot;#{targeted_class}##{method_name}&quot;
+      stack = @proceeds_methods[key]
+
+      index_of_last_activation = stack.rindex do<ol class="nocode errors smells">  <li>    <div class="description">      <div class="heading">        <span>          <i class="fa fa-warning" aria-hidden="true"></i>          <a href="https://github.com/troessner/reek/blob/master/docs/Feature-Envy.md" target="_blank"><b>FeatureEnvy</b></a>        </span>      </div>      <span>FeatureExecution#_deactivate_behaviour refers to 'stack' more than self (maybe move it to another class?)</span>              <span>Locations:</span>                  <a href="feature_execution.html#L242" class="js-smell-location">0</a>                  <a href="feature_execution.html#L247" class="js-smell-location">1</a>                  <a href="feature_execution.html#L249" class="js-smell-location">2</a>                  <a href="feature_execution.html#L254" class="js-smell-location">3</a>                  <a href="feature_execution.html#L263" class="js-smell-location">4</a>                  <a href="feature_execution.html#L265" class="js-smell-location">5</a>                  </div>  </li>  <li>    <div class="description">      <div class="heading">        <span>          <i class="fa fa-warning" aria-hidden="true"></i>          <a href="https://github.com/troessner/reek/blob/master/docs/Nested-Iterators.md" target="_blank"><b>NestedIterators</b></a>        </span>      </div>      <span>FeatureExecution#_deactivate_behaviour contains iterators nested 2 deep</span>          </div>  </li></ol>
+        |alteration|
+        feature_module.name == alteration.feature_name &amp;&amp; method_name = alteration.method_name<ol class="nocode errors smells">  <li>    <div class="description">      <div class="heading">        <span>          <i class="fa fa-warning" aria-hidden="true"></i>          <a href="https://github.com/troessner/reek/blob/master/docs/Duplicate-Method-Call.md" target="_blank"><b>DuplicateMethodCall</b></a>        </span>      </div>      <span>FeatureExecution#_deactivate_behaviour calls 'feature_module.name' 2 times</span>              <span>Locations:</span>                  <a href="feature_execution.html#L244" class="js-smell-location">0</a>                  <a href="feature_execution.html#L259" class="js-smell-location">1</a>                  </div>  </li></ol>
+      end
+
+      if index_of_last_activation &lt; stack.length() - 1<ol class="nocode errors smells">  <li>    <div class="description">      <div class="heading">        <span>          <i class="fa fa-warning" aria-hidden="true"></i>          <a href="https://github.com/troessner/reek/blob/master/docs/Duplicate-Method-Call.md" target="_blank"><b>DuplicateMethodCall</b></a>        </span>      </div>      <span>FeatureExecution#_deactivate_behaviour calls 'stack.length()' 2 times</span>              <span>Locations:</span>                  <a href="feature_execution.html#L247" class="js-smell-location">0</a>                  <a href="feature_execution.html#L265" class="js-smell-location">1</a>                  </div>  </li>  <li>    <div class="description">      <div class="heading">        <span>          <i class="fa fa-warning" aria-hidden="true"></i>          <a href="https://github.com/troessner/reek/blob/master/docs/Feature-Envy.md" target="_blank"><b>FeatureEnvy</b></a>        </span>      </div>      <span>FeatureExecution#_deactivate_behaviour refers to 'stack' more than self (maybe move it to another class?)</span>              <span>Locations:</span>                  <a href="feature_execution.html#L242" class="js-smell-location">0</a>                  <a href="feature_execution.html#L247" class="js-smell-location">1</a>                  <a href="feature_execution.html#L249" class="js-smell-location">2</a>                  <a href="feature_execution.html#L254" class="js-smell-location">3</a>                  <a href="feature_execution.html#L263" class="js-smell-location">4</a>                  <a href="feature_execution.html#L265" class="js-smell-location">5</a>                  </div>  </li></ol>
+        proceed_detected = false
+        if stack[index_of_last_activation + 1].method_code.owner() == EmptyModule<ol class="nocode errors smells">  <li>    <div class="description">      <div class="heading">        <span>          <i class="fa fa-warning" aria-hidden="true"></i>          <a href="https://github.com/troessner/reek/blob/master/docs/Duplicate-Method-Call.md" target="_blank"><b>DuplicateMethodCall</b></a>        </span>      </div>      <span>FeatureExecution#_deactivate_behaviour calls 'index_of_last_activation + 1' 2 times</span>              <span>Locations:</span>                  <a href="feature_execution.html#L249" class="js-smell-location">0</a>                  <a href="feature_execution.html#L254" class="js-smell-location">1</a>                  </div>  </li>  <li>    <div class="description">      <div class="heading">        <span>          <i class="fa fa-warning" aria-hidden="true"></i>          <a href="https://github.com/troessner/reek/blob/master/docs/Duplicate-Method-Call.md" target="_blank"><b>DuplicateMethodCall</b></a>        </span>      </div>      <span>FeatureExecution#_deactivate_behaviour calls 'stack[index_of_last_activation + 1]' 2 times</span>              <span>Locations:</span>                  <a href="feature_execution.html#L249" class="js-smell-location">0</a>                  <a href="feature_execution.html#L254" class="js-smell-location">1</a>                  </div>  </li>  <li>    <div class="description">      <div class="heading">        <span>          <i class="fa fa-warning" aria-hidden="true"></i>          <a href="https://github.com/troessner/reek/blob/master/docs/Duplicate-Method-Call.md" target="_blank"><b>DuplicateMethodCall</b></a>        </span>      </div>      <span>FeatureExecution#_deactivate_behaviour calls 'stack[index_of_last_activation + 1].method_code' 2 times</span>              <span>Locations:</span>                  <a href="feature_execution.html#L249" class="js-smell-location">0</a>                  <a href="feature_execution.html#L254" class="js-smell-location">1</a>                  </div>  </li>  <li>    <div class="description">      <div class="heading">        <span>          <i class="fa fa-warning" aria-hidden="true"></i>          <a href="https://github.com/troessner/reek/blob/master/docs/Feature-Envy.md" target="_blank"><b>FeatureEnvy</b></a>        </span>      </div>      <span>FeatureExecution#_deactivate_behaviour refers to 'stack' more than self (maybe move it to another class?)</span>              <span>Locations:</span>                  <a href="feature_execution.html#L242" class="js-smell-location">0</a>                  <a href="feature_execution.html#L247" class="js-smell-location">1</a>                  <a href="feature_execution.html#L249" class="js-smell-location">2</a>                  <a href="feature_execution.html#L254" class="js-smell-location">3</a>                  <a href="feature_execution.html#L263" class="js-smell-location">4</a>                  <a href="feature_execution.html#L265" class="js-smell-location">5</a>                  </div>  </li></ol>
+          # This assumption comes from the fact that we only use the EmptyModule module
+          # when we need to overwrite the proceed statement of the feature
+          proceed_detected = true
+        else
+          proceed_detected = stack[index_of_last_activation + 1].method_code.source().include?(&#39;proceed&#39;)<ol class="nocode errors smells">  <li>    <div class="description">      <div class="heading">        <span>          <i class="fa fa-warning" aria-hidden="true"></i>          <a href="https://github.com/troessner/reek/blob/master/docs/Duplicate-Method-Call.md" target="_blank"><b>DuplicateMethodCall</b></a>        </span>      </div>      <span>FeatureExecution#_deactivate_behaviour calls 'index_of_last_activation + 1' 2 times</span>              <span>Locations:</span>                  <a href="feature_execution.html#L249" class="js-smell-location">0</a>                  <a href="feature_execution.html#L254" class="js-smell-location">1</a>                  </div>  </li>  <li>    <div class="description">      <div class="heading">        <span>          <i class="fa fa-warning" aria-hidden="true"></i>          <a href="https://github.com/troessner/reek/blob/master/docs/Duplicate-Method-Call.md" target="_blank"><b>DuplicateMethodCall</b></a>        </span>      </div>      <span>FeatureExecution#_deactivate_behaviour calls 'stack[index_of_last_activation + 1]' 2 times</span>              <span>Locations:</span>                  <a href="feature_execution.html#L249" class="js-smell-location">0</a>                  <a href="feature_execution.html#L254" class="js-smell-location">1</a>                  </div>  </li>  <li>    <div class="description">      <div class="heading">        <span>          <i class="fa fa-warning" aria-hidden="true"></i>          <a href="https://github.com/troessner/reek/blob/master/docs/Duplicate-Method-Call.md" target="_blank"><b>DuplicateMethodCall</b></a>        </span>      </div>      <span>FeatureExecution#_deactivate_behaviour calls 'stack[index_of_last_activation + 1].method_code' 2 times</span>              <span>Locations:</span>                  <a href="feature_execution.html#L249" class="js-smell-location">0</a>                  <a href="feature_execution.html#L254" class="js-smell-location">1</a>                  </div>  </li>  <li>    <div class="description">      <div class="heading">        <span>          <i class="fa fa-warning" aria-hidden="true"></i>          <a href="https://github.com/troessner/reek/blob/master/docs/Feature-Envy.md" target="_blank"><b>FeatureEnvy</b></a>        </span>      </div>      <span>FeatureExecution#_deactivate_behaviour refers to 'stack' more than self (maybe move it to another class?)</span>              <span>Locations:</span>                  <a href="feature_execution.html#L242" class="js-smell-location">0</a>                  <a href="feature_execution.html#L247" class="js-smell-location">1</a>                  <a href="feature_execution.html#L249" class="js-smell-location">2</a>                  <a href="feature_execution.html#L254" class="js-smell-location">3</a>                  <a href="feature_execution.html#L263" class="js-smell-location">4</a>                  <a href="feature_execution.html#L265" class="js-smell-location">5</a>                  </div>  </li></ol>
+        end
+
+        if proceed_detected &amp;&amp; index_of_last_activation == 0
+          raise(InvalidAlterationError,
+                &quot;You cannot remove the adaptation &#39;#{feature_module.name}&#39; because some features activated after this are based on it.&quot;)<ol class="nocode errors smells">  <li>    <div class="description">      <div class="heading">        <span>          <i class="fa fa-warning" aria-hidden="true"></i>          <a href="https://github.com/troessner/reek/blob/master/docs/Duplicate-Method-Call.md" target="_blank"><b>DuplicateMethodCall</b></a>        </span>      </div>      <span>FeatureExecution#_deactivate_behaviour calls 'feature_module.name' 2 times</span>              <span>Locations:</span>                  <a href="feature_execution.html#L244" class="js-smell-location">0</a>                  <a href="feature_execution.html#L259" class="js-smell-location">1</a>                  </div>  </li></ol>
+        end
+      end
+
+      stack.delete_at(index_of_last_activation)<ol class="nocode errors smells">  <li>    <div class="description">      <div class="heading">        <span>          <i class="fa fa-warning" aria-hidden="true"></i>          <a href="https://github.com/troessner/reek/blob/master/docs/Feature-Envy.md" target="_blank"><b>FeatureEnvy</b></a>        </span>      </div>      <span>FeatureExecution#_deactivate_behaviour refers to 'stack' more than self (maybe move it to another class?)</span>              <span>Locations:</span>                  <a href="feature_execution.html#L242" class="js-smell-location">0</a>                  <a href="feature_execution.html#L247" class="js-smell-location">1</a>                  <a href="feature_execution.html#L249" class="js-smell-location">2</a>                  <a href="feature_execution.html#L254" class="js-smell-location">3</a>                  <a href="feature_execution.html#L263" class="js-smell-location">4</a>                  <a href="feature_execution.html#L265" class="js-smell-location">5</a>                  </div>  </li></ol>
+
+      if index_of_last_activation == stack.length()<ol class="nocode errors smells">  <li>    <div class="description">      <div class="heading">        <span>          <i class="fa fa-warning" aria-hidden="true"></i>          <a href="https://github.com/troessner/reek/blob/master/docs/Duplicate-Method-Call.md" target="_blank"><b>DuplicateMethodCall</b></a>        </span>      </div>      <span>FeatureExecution#_deactivate_behaviour calls 'stack.length()' 2 times</span>              <span>Locations:</span>                  <a href="feature_execution.html#L247" class="js-smell-location">0</a>                  <a href="feature_execution.html#L265" class="js-smell-location">1</a>                  </div>  </li>  <li>    <div class="description">      <div class="heading">        <span>          <i class="fa fa-warning" aria-hidden="true"></i>          <a href="https://github.com/troessner/reek/blob/master/docs/Feature-Envy.md" target="_blank"><b>FeatureEnvy</b></a>        </span>      </div>      <span>FeatureExecution#_deactivate_behaviour refers to 'stack' more than self (maybe move it to another class?)</span>              <span>Locations:</span>                  <a href="feature_execution.html#L242" class="js-smell-location">0</a>                  <a href="feature_execution.html#L247" class="js-smell-location">1</a>                  <a href="feature_execution.html#L249" class="js-smell-location">2</a>                  <a href="feature_execution.html#L254" class="js-smell-location">3</a>                  <a href="feature_execution.html#L263" class="js-smell-location">4</a>                  <a href="feature_execution.html#L265" class="js-smell-location">5</a>                  </div>  </li></ol>
+        _undeploy(targeted_class, method_name, stack)
+      end
+    end
+  end
+
+  # For the moment, the deploy method runs well.
+  # However if I must sort the different methods with a specific strategy, this code runs in O(n) = n²
+  # Solution: use the principle of method dispatch
+  # 	-&gt; idea: get all methods and order them to finally push in the proceed
+  def _deploy(targeted_class, alteration)
+    # As I use define_method I cannot get method_code from a class due to the problem of binding.
+    # If method_code from a class, I would get the following error
+    # `define_method&#39;: bind argument must be a subclass of F1 (TypeError).
+    targeted_class.send(:define_method, alteration.method_name, alteration.method_code)<ol class="nocode errors smells">  <li>    <div class="description">      <div class="heading">        <span>          <i class="fa fa-warning" aria-hidden="true"></i>          <a href="https://github.com/troessner/reek/blob/master/docs/Duplicate-Method-Call.md" target="_blank"><b>DuplicateMethodCall</b></a>        </span>      </div>      <span>FeatureExecution#_deploy calls 'alteration.method_name' 2 times</span>              <span>Locations:</span>                  <a href="feature_execution.html#L279" class="js-smell-location">0</a>                  <a href="feature_execution.html#L281" class="js-smell-location">1</a>                  </div>  </li>  <li>    <div class="description">      <div class="heading">        <span>          <i class="fa fa-warning" aria-hidden="true"></i>          <a href="https://github.com/troessner/reek/blob/master/docs/Feature-Envy.md" target="_blank"><b>FeatureEnvy</b></a>        </span>      </div>      <span>FeatureExecution#_deploy refers to 'alteration' more than self (maybe move it to another class?)</span>              <span>Locations:</span>                  <a href="feature_execution.html#L279" class="js-smell-location">0</a>                  <a href="feature_execution.html#L281" class="js-smell-location">1</a>                  </div>  </li></ol>
+
+    key = &quot;#{targeted_class}##{alteration.method_name}&quot;<ol class="nocode errors smells">  <li>    <div class="description">      <div class="heading">        <span>          <i class="fa fa-warning" aria-hidden="true"></i>          <a href="https://github.com/troessner/reek/blob/master/docs/Duplicate-Method-Call.md" target="_blank"><b>DuplicateMethodCall</b></a>        </span>      </div>      <span>FeatureExecution#_deploy calls 'alteration.method_name' 2 times</span>              <span>Locations:</span>                  <a href="feature_execution.html#L279" class="js-smell-location">0</a>                  <a href="feature_execution.html#L281" class="js-smell-location">1</a>                  </div>  </li>  <li>    <div class="description">      <div class="heading">        <span>          <i class="fa fa-warning" aria-hidden="true"></i>          <a href="https://github.com/troessner/reek/blob/master/docs/Feature-Envy.md" target="_blank"><b>FeatureEnvy</b></a>        </span>      </div>      <span>FeatureExecution#_deploy refers to 'alteration' more than self (maybe move it to another class?)</span>              <span>Locations:</span>                  <a href="feature_execution.html#L279" class="js-smell-location">0</a>                  <a href="feature_execution.html#L281" class="js-smell-location">1</a>                  </div>  </li></ol>
+    stack = @proceeds_methods[key]
+    if stack
+      stack.push(alteration)
+    else
+      @proceeds_methods[key] = [alteration]
+    end
+  end
+
+  def _undeploy(targeted_class, current_method, stack)
+    # I must use the meta method to bypass
+    # that the method remove_method is private for a class
+    targeted_class.send(:remove_method, current_method)
+
+    if !stack.empty?()<ol class="nocode errors smells">  <li>    <div class="description">      <div class="heading">        <span>          <i class="fa fa-warning" aria-hidden="true"></i>          <a href="https://github.com/troessner/reek/blob/master/docs/Feature-Envy.md" target="_blank"><b>FeatureEnvy</b></a>        </span>      </div>      <span>FeatureExecution#_undeploy refers to 'stack' more than self (maybe move it to another class?)</span>              <span>Locations:</span>                  <a href="feature_execution.html#L295" class="js-smell-location">0</a>                  <a href="feature_execution.html#L296" class="js-smell-location">1</a>                  </div>  </li></ol>
+      alteration = stack.pop()<ol class="nocode errors smells">  <li>    <div class="description">      <div class="heading">        <span>          <i class="fa fa-warning" aria-hidden="true"></i>          <a href="https://github.com/troessner/reek/blob/master/docs/Feature-Envy.md" target="_blank"><b>FeatureEnvy</b></a>        </span>      </div>      <span>FeatureExecution#_undeploy refers to 'stack' more than self (maybe move it to another class?)</span>              <span>Locations:</span>                  <a href="feature_execution.html#L295" class="js-smell-location">0</a>                  <a href="feature_execution.html#L296" class="js-smell-location">1</a>                  </div>  </li></ol>
+      _deploy(targeted_class, alteration)
+    end
+  end
+
+end
+</code>
+  </div>
+</div>
+
+        </div>
+      </div>
+    </div>
+
+    <!-- JavaScripts -->
+    <script src='../assets/javascripts/jquery.min.js'></script>
+    <script src='../assets/javascripts/jquery.tablesorter.min.js'></script>
+    <script src='../assets/javascripts/jquery.scrollTo.min.js'></script>
+    <script src='../assets/javascripts/jquery.timeago.js'></script>
+    <script src='../assets/javascripts/highcharts.src-4.0.1.js'></script>
+    <script src='../assets/javascripts/prettify.js'></script>
+    <script src='../assets/javascripts/bootstrap.min.js'></script>
+    <script src='../assets/javascripts/application.js'></script>
+    <script src='../assets/javascripts/jquery.filtertable.min.js'></script>
+  </body>
+</html>

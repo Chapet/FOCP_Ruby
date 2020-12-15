@@ -4,7 +4,7 @@ require "observer"
 # Class to define a keys model
 #
 #
-class KeysModel
+class KeysModel < FBCOObject
 
   include Observable
 

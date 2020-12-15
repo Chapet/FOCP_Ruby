@@ -25,7 +25,7 @@ class AppMappingDeclaration < MappingDeclaration
             ] =>
             [
 				AppFeatureDeclaration.instance.display_calculator_feature(),
-				AppFeatureDeclaration.instance.display_scientific_keys_feature(),
+				AppFeatureDeclaration.instance.display_additional_keys_feature(),
 			],
  
             ##############################################################################################
@@ -34,14 +34,14 @@ class AppMappingDeclaration < MappingDeclaration
                 AppContextDeclaration.instance.normal_user_context()
             ] =>
             [
-                AppFeatureDeclaration.instance.display_set_low_scale_feature(),
+                AppFeatureDeclaration.instance.set_scale_low_feature(),
             ],
  
             [
                 AppContextDeclaration.instance.old_context()
             ] =>
             [
-				AppFeatureDeclaration.instance.display_set_high_scale_feature(),
+				AppFeatureDeclaration.instance.set_scale_high_feature(),
 			],
  
             ##############################################################################################
@@ -50,14 +50,13 @@ class AppMappingDeclaration < MappingDeclaration
                 AppContextDeclaration.instance.normal_usage_context()
             ] =>
             [
-                AppFeatureDeclaration.instance.not_arrows_feature(),
             ],
   
             [
                  AppContextDeclaration.instance.exam_context()
             ] =>
             [
-                AppFeatureDeclaration.instance.arrows_feature(),
+                AppFeatureDeclaration.instance.display_arrows_feature(),
             ]
         }
     end

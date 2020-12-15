@@ -1,4 +1,4 @@
-class KeysView
+class KeysView < FBCOObject
 
     attr_accessor :main_window
   
@@ -7,11 +7,13 @@ class KeysView
       @keys_model.add_observer(self)
       @has_title = false
     end
+
+    def update() # à mettre dans les features
+    end
   
     def create_keys_layout()
       unless @has_title
         h_frame = FXUI::Factory.create_ui_object(:HorizontalFrame, @main_window, :opts => LAYOUT_FILL_X)
-  
         FXUI::Factory.create_widget(:Label,
                                     h_frame,
                                     "Keys",

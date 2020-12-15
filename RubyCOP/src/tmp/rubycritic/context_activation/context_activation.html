@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Ruby Critic - Home</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- StyleSheets -->
+    <link href="../assets/stylesheets/bootstrap.min.css" media="screen, projection, print" rel="stylesheet" type="text/css">
+    <link href="../assets/stylesheets/font-awesome.min.css" media="screen, projection, print" rel="stylesheet" type="text/css">
+    <link href="../assets/stylesheets/prettify.custom_theme.css" media="screen, projection, print" rel="stylesheet" type="text/css">
+    <link href="../assets/stylesheets/application.css" media="screen, projection, print" rel="stylesheet" type="text/css">
+  </head>
+
+  <body>
+    <header class="navbar navbar-default navbar-fixed-top">
+      <a href="#menu-toggle" class="btn btn-default hidden-lg visible-sm-* hidden-md visible-xs-* pull-left" id="menu-toggle"><i class="fa fa-bars" aria-hidden="true"></i></a>
+      <a href="../overview.html"><img src="../assets/images/logo.png" alt="Ruby Critic Logo" title="Ruby Critic Logo" width="55"><span class="logo">RUBYCRITIC</span></a>
+      
+    </header>
+    <div id="wrapper">
+      <!-- Sidebar -->
+      <aside id="sidebar-wrapper">
+        <ul class="sidebar-nav">
+          <li class="sidebar-item">
+            <a href="../overview.html" class="project-nav-item overview-nav"><i class="fa fa-dashboard"></i>Overview</a>
+          </li>
+          <li class="sidebar-item">
+            <a href="../code_index.html" class="project-nav-item code-index-nav"><i class="fa fa-code"></i>Code</a>
+          </li>
+          <li class="sidebar-item">
+            <a href="../smells_index.html" class="project-nav-item smells-index-nav"><i class="fa fa-warning"></i>Smells</a>
+          </li>
+          <li class="sidebar-item">
+            <a href="../simple_cov_index.html" class="project-nav-item coverage-index-nav"><i class="fa fa-umbrella"></i>Coverage</a>
+          </li>
+        </ul>
+      </aside>
+      <!-- /#sidebar-wrapper -->
+      <div id="page-content-wrapper">
+        <div class="container-fluid">
+          <div class="row">
+  <!--Page Title -->
+  <div class="Page_Title">
+    <div class="file-time">
+      <span class="committed-at">
+        
+          Never committed
+        
+      </span>
+    </div>
+    <div>
+      <h3><small>context_activation /</small> context_activation.rb</h3>
+    </div>
+  </div>
+  <!--End Page Title -->
+  <div class="Content_Wrapper">
+    <!-- code detail -->
+    <div class="code-top-detail clearfix row">
+      <div class="col-md-8">
+        <div class="row">
+          <div class="col-md-1">
+            <div class="rating b big">
+              B
+            </div>
+          </div>
+          <div class="code-statistics col-md-11">
+            <div class="col-md-3">
+              <div><span class="metric">57</span><small> lines of codes</small></div>
+              <div><span class="metric">4</span><small> methods</small></div>
+            </div>
+            <div class="col-md-3">
+              <div><span class="metric">7.9</span><small> complexity/method</small></div>
+              <div><span class="metric">0</span><small> churn</small></div>
+            </div>
+            <div class="col-md-3">
+              <div><span class="metric">31.72</span><small> complexity</small></div>
+              <div><span class="metric">32</span><small> duplications</small></div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="code-tabs">
+          <ul class="nav nav-pills right-to-left">
+            <li><a href="#" id="toggle-code" class="toggle-button button">code</a></li>
+            <li class="active">
+              <a href="#" id="toggle-smells" class="toggle-button button">
+                3
+                smells
+              </a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <code class="prettyprint linenums lang-ruby file-code js-file-code">require &#39;singleton&#39;
+
+require_relative &#39;context_activation_proxy&#39;
+require_relative &#39;../application_domain/context_definition&#39;
+require_relative &#39;../feature_selection/feature_selection&#39;
+
+#
+# Class representing the behaviour of the context activation component
+#
+# Author: Benoît Duhoux
+# Date: 2018
+#
+class ContextActivation
+
+	include ContextActivationProxy
+	include Singleton
+
+	def activate(*contexts)<ol class="nocode errors smells">  <li>    <div class="description">      <div class="heading">        <span>          <i class="fa fa-warning" aria-hidden="true"></i>          <a href="http://docs.seattlerb.org/flay/" target="_blank"><b>DuplicateCode</b></a>        </span>      </div>      <span>Similar code found in 2 nodes</span>              <span>Locations:</span>                  <a href="context_activation.html#L18" class="js-smell-location">0</a>                  <a href="context_activation.html#L24" class="js-smell-location">1</a>                  </div>  </li></ol>
+		activated_contexts = ContextDefinition.instance.activate(contexts)
+		feedback_for_feature_visualiser(:activate, activated_contexts)
+		FeatureSelection.instance.select_changes({:activated =&gt; activated_contexts})
+	end
+
+	def deactivate(*contexts)<ol class="nocode errors smells">  <li>    <div class="description">      <div class="heading">        <span>          <i class="fa fa-warning" aria-hidden="true"></i>          <a href="http://docs.seattlerb.org/flay/" target="_blank"><b>DuplicateCode</b></a>        </span>      </div>      <span>Similar code found in 2 nodes</span>              <span>Locations:</span>                  <a href="context_activation.html#L18" class="js-smell-location">0</a>                  <a href="context_activation.html#L24" class="js-smell-location">1</a>                  </div>  </li></ol>
+		deactivated_contexts = ContextDefinition.instance.deactivate(contexts)
+		feedback_for_feature_visualiser(:deactivate, deactivated_contexts)
+		FeatureSelection.instance.select_changes({:deactivated =&gt; deactivated_contexts})
+	end
+
+	def toggle(actions_on_contexts)
+		new_actions_on_contexts = ContextDefinition.instance.toggle(actions_on_contexts)
+    to_select = _prepare_selection(new_actions_on_contexts)
+    to_select.each do<ol class="nocode errors smells">  <li>    <div class="description">      <div class="heading">        <span>          <i class="fa fa-warning" aria-hidden="true"></i>          <a href="https://github.com/troessner/reek/blob/master/docs/Feature-Envy.md" target="_blank"><b>FeatureEnvy</b></a>        </span>      </div>      <span>ContextActivation#toggle refers to 'to_select' more than self (maybe move it to another class?)</span>              <span>Locations:</span>                  <a href="context_activation.html#L33" class="js-smell-location">0</a>                  <a href="context_activation.html#L38" class="js-smell-location">1</a>                  <a href="context_activation.html#L39" class="js-smell-location">2</a>                  </div>  </li></ol>
+      |action, contexts|
+      feedback_for_feature_visualiser(action, contexts)
+    end
+    FeatureSelection.instance.select_changes({
+                                                 :activated =&gt; to_select[:activate],<ol class="nocode errors smells">  <li>    <div class="description">      <div class="heading">        <span>          <i class="fa fa-warning" aria-hidden="true"></i>          <a href="https://github.com/troessner/reek/blob/master/docs/Feature-Envy.md" target="_blank"><b>FeatureEnvy</b></a>        </span>      </div>      <span>ContextActivation#toggle refers to 'to_select' more than self (maybe move it to another class?)</span>              <span>Locations:</span>                  <a href="context_activation.html#L33" class="js-smell-location">0</a>                  <a href="context_activation.html#L38" class="js-smell-location">1</a>                  <a href="context_activation.html#L39" class="js-smell-location">2</a>                  </div>  </li></ol>
+                                                 :deactivated =&gt; to_select[:deactivate],<ol class="nocode errors smells">  <li>    <div class="description">      <div class="heading">        <span>          <i class="fa fa-warning" aria-hidden="true"></i>          <a href="https://github.com/troessner/reek/blob/master/docs/Feature-Envy.md" target="_blank"><b>FeatureEnvy</b></a>        </span>      </div>      <span>ContextActivation#toggle refers to 'to_select' more than self (maybe move it to another class?)</span>              <span>Locations:</span>                  <a href="context_activation.html#L33" class="js-smell-location">0</a>                  <a href="context_activation.html#L38" class="js-smell-location">1</a>                  <a href="context_activation.html#L39" class="js-smell-location">2</a>                  </div>  </li></ol>
+                                             })
+  end
+
+  private
+
+  def _prepare_selection(actions_on_contexts)<ol class="nocode errors smells">  <li>    <div class="description">      <div class="heading">        <span>          <i class="fa fa-warning" aria-hidden="true"></i>          <a href="https://github.com/troessner/reek/blob/master/docs/Utility-Function.md" target="_blank"><b>UtilityFunction</b></a>        </span>      </div>      <span>ContextActivation#_prepare_selection doesn't depend on instance state (maybe move it to another class?)</span>          </div>  </li></ol>
+    concerned_contexts = {
+        :activate =&gt; [],
+        :deactivate =&gt; []
+    }
+    actions_on_contexts.each do
+      |action_on_context|
+      concerned_contexts[action_on_context.action.to_sym] &lt;&lt; action_on_context.entity
+    end
+    return concerned_contexts
+  end
+
+end
+</code>
+  </div>
+</div>
+
+        </div>
+      </div>
+    </div>
+
+    <!-- JavaScripts -->
+    <script src='../assets/javascripts/jquery.min.js'></script>
+    <script src='../assets/javascripts/jquery.tablesorter.min.js'></script>
+    <script src='../assets/javascripts/jquery.scrollTo.min.js'></script>
+    <script src='../assets/javascripts/jquery.timeago.js'></script>
+    <script src='../assets/javascripts/highcharts.src-4.0.1.js'></script>
+    <script src='../assets/javascripts/prettify.js'></script>
+    <script src='../assets/javascripts/bootstrap.min.js'></script>
+    <script src='../assets/javascripts/application.js'></script>
+    <script src='../assets/javascripts/jquery.filtertable.min.js'></script>
+  </body>
+</html>

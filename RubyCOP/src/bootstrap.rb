@@ -1,5 +1,7 @@
 APP_LOCATION = File.dirname($PROGRAM_NAME)
 
+require_relative 'fbco_object'
+
 require "#{APP_LOCATION}/../../src/code_execution_at_launch_time"
 Dir["#{APP_LOCATION}/skeleton/*.rb"].each { |file| require file }
 require "#{APP_LOCATION}/contexts/context_declarations"
