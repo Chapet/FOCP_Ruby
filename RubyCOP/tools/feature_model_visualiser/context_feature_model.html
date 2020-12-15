@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<!-- HTML5 document type -->
+<html>
+
+<head>
+  <meta content="text/html;charset=utf-8" http-equiv="Content-Type">
+  <meta content="utf-8" http-equiv="encoding">
+
+  <title>Feature and Context model visualization</title>
+
+  <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+  <link rel="stylesheet" type="text/css" href="css/bootstrap-grid.min.css">
+  <link rel="stylesheet" type="text/css" href="css/bootstrap-toggle.min.css">
+  <link rel="stylesheet" type="text/css" href="css/feature_visualizer.css">
+</head>
+
+<body>
+  <nav class="navbar navbar-dark bg-dark sticky-top">
+    <a class="navbar-brand" href="#">Context and feature model visualisation</a>
+    <span class="navbar-text">
+      A visualisation tool that shows the context and feature model
+    </span>
+  </nav>
+
+
+  <div class="col-sm-12">
+    <div class="card bg-light border-dark">
+      <h7 class="card-header border-dark">Context and feature model</h7>
+      <div class="card-body" style="background-color: #DAE4E4;">
+        <div id="myDiagramDiv" style="width:100%; position: relative; background-color: #DAE4E4;"></div>
+      </div>
+
+    </div>
+  </div>
+
+  <div class="col-sm-12">
+    <div class="row">
+      <div class="col-sm-9">
+        <div class="card bg-light border-dark">
+          <h7 class="card-header border-dark">Filters</h7>
+          <div class="card-body" style="padding:0px; background-color: #DAE4E4;">
+            <div id="myCheckboxes" style="width:99%; position: relative; background-color: #DAE4E4;"></div>
+          </div>
+        </div>
+      </div>
+      <div class="col-sm-3">
+        <div class="card bg-light border-dark">
+            <h7 class="card-header border-dark">Configuration</h7>
+          <div class="card multiple">
+            <div class="card-body compressed border-dark">
+              <div class="row align-items-start">
+                  <div class="col-sm-4 row-name">
+                    <label for="colorSkins">
+                  Color Skins
+                </label>
+              </div>
+                <div class="col-sm-8" id="colorSkins">
+                  <div class="radio">
+                    <label><input type="radio" name="skins" value="standard" checked>Standard</label>
+                  </div>
+                  <div class="radio">
+                    <label><input type="radio" name="skins" value="black-and-white">Black-and-white</label>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="card multiple">
+              <div class="card-body compressed">
+                  <div class="row align-items-start">
+                      <div class="col-sm-5">
+                      <label for="step-by-step" class="control-label">
+                          Step-by-step
+                        </label>
+                      </div>
+                        <div class="col-sm-2" >
+                          <input id="step-by-step-mode" data-toggle="toggle" data-size="mini" type="checkbox">
+                        </div>
+                        <div class="col-sm-3">
+                        <button id="next-step" type="button" class="btn btn-primary btn-xs" disabled>
+                          Next step
+                        </button>
+                      </div>
+                  </div>
+              </div>
+          </div>
+          <div class="card multiple">
+              <div class="card-body compressed">
+                  <div class="row align-items-start">
+                    <div class="col-sm-6">
+                      <label for="time">
+                          Time between each refresh (sec.)
+                        </label>
+                      </div>
+                        <div class="col-sm-6 input-group-sm">
+                          <input id="time" type="number" class="form-control" value="10">
+                        </div>
+                  </div>
+              </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+
+
+
+  <div id="footer">
+    Developed by Hoo Sing Leung, @UCLouvain, 2018-2019
+  </div>
+
+
+
+  <script type="text/javascript" src="js/jquery.min.js"></script>
+  <script type="text/javascript" src="js/bootstrap.min.js"></script>
+  <script type="text/javascript" src="js/bootstrap-toggle.min.js"></script>
+  <script type="text/javascript" src="js/go-debug.js"></script>
+  <script type="text/javascript" src="js/header.js"></script>
+  <script type="text/javascript" src="js/buttons.js"></script>
+  <script type="text/javascript" src="js/links.js"></script>
+  <script type="text/javascript" src="js/context_feature_model.js"></script>
+  <script type="text/javascript" src="js/class_diagram_model.js"></script>
+  <!-- <script type="text/javascript" src="js/data/hartmanData.js"></script> -->
+  <script type="text/javascript" src="js/data.js"></script>
+  <script type="text/javascript" src="js/predefined_views.js"></script>
+  <script type="text/javascript" src="js/filters.js"></script>
+  <script type="text/javascript" src="js/visualiser.js"></script>
+  <script type="text/javascript" src="js/websocket.js"></script>
+  <script type="text/javascript" src="js/configuration.js"></script>
+  <!-- <script type="text/javascript" src="js/init.js"></script> -->
+
+</body>
+
+
+</html>

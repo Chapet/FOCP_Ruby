@@ -44,14 +44,8 @@ class AppMappingDeclaration < MappingDeclaration
 				AppFeatureDeclaration.instance.set_scale_high_feature(),
 			],
  
-            ##############################################################################################
- 
-            [
-                AppContextDeclaration.instance.normal_usage_context()
-            ] =>
-            [
-            ],
-  
+            #############################################################################################
+                
             [
                  AppContextDeclaration.instance.exam_context()
             ] =>

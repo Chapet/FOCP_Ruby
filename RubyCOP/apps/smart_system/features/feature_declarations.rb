@@ -22,7 +22,8 @@ class AppFeatureDeclaration < FeatureDeclaration
 		_define_features_about_size()
 
 		@root_feature.add_relation(:Mandatory, [@display_keys_feature])
-		@root_feature.add_relation(:Optional, [@display_arrows_feature, @display_size_feature])
+		@root_feature.add_relation(:Mandatory, [@display_size_feature])
+		@root_feature.add_relation(:Optional, [@display_arrows_feature])
 	end
 
 	private 

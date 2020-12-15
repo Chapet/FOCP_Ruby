@@ -5,7 +5,6 @@ require "observer"
 #
 #
 class KeysModel < FBCOObject
-
   include Observable
 
   def initialize()

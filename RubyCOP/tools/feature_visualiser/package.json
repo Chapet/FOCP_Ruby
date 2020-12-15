@@ -1,0 +1,14 @@
+{
+  "name": "feature_visualiser",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {},
+  "keywords": [],
+  "author": "Benoît Duhoux",
+  "license": "ISC",
+  "description": "",
+  "dependencies": {
+    "lodash.clonedeep": "^4.5.0",
+    "vis-network": "^6.4.7"
+  }
+}

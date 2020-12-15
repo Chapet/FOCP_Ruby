@@ -1,0 +1,171 @@
+<html>
+    
+  <head>
+    <meta content="text/html;charset=utf-8" http-equiv="Content-Type">
+    <meta content="utf-8" http-equiv="encoding">
+
+    <title>
+      Feature Visualiser
+    </title>
+
+    <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="css/bootstrap-toggle.min.css">
+    <link rel="stylesheet" type="text/css" href="css/visualiser.css">
+  </head>
+
+  <body>
+
+  	<nav class="navbar navbar-inverse navbar-static-top">
+  		<div class="container-fluid">
+  			<div class="navbar-header">
+  				<a class="navbar-brand" href="#">
+            Feature Visualiser
+          </a>
+          <p class="navbar-text">
+            A visualisation to understand which contexts, features get activated and how the features alter the application.
+          </p>
+        </div>
+  		</div>
+  	</nav>
+
+    <div id="content">
+      <div class="col-md-12">
+        <div class="height-60">
+          <div class="col-md-12">
+            <div class="panel panel-primary">
+              <div class="panel-heading clearfix">
+                <h3 class="panel-title pull-left">
+                  Visualisation
+                </h3>
+              </div>
+              <div id="visualization" class="panel-body viz">
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-12">
+        <div class="height-30">
+          <div class="col-md-5">
+            <div id="console-widget" class="panel panel-primary">
+              <div class="panel-heading">
+                <h3 class="panel-title">
+                  Output console
+                </h3>
+              </div>
+              <div id="console" class="panel-body">
+                <ul></ul>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-md-3">
+            <div class="panel panel-primary">
+              <div class="panel-heading">
+                <h3 class="panel-title">Legend</h3>
+              </div>
+              <div id="legend" class="panel-body viz">
+              </div>
+            </div>
+          </div>
+
+          <div class="col-md-4">
+            <div class="panel panel-primary">
+              <div class="panel-heading clearfix">
+                <h3 class="panel-title pull-left">
+                  Configuration
+                </h3>
+              </div>
+              <div id="configuration" class="panel-body">
+                <div class="form-group">
+                  <label for="contexts" class="col-md-6 control-label">
+                    Display contexts
+                  </label>
+                  <div class="col-md-6">
+                    <input id="contexts" data-toggle="toggle" type="checkbox">
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label for="details" class="col-md-6 control-label">
+                    Display details
+                  </label>
+                  <div class="col-md-6">
+                    <input id="details" data-toggle="toggle" type="checkbox">
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label for="step-by-step" class="col-md-6 control-label">
+                    Step-by-step
+                  </label>
+                  <div class="col-md-2">
+                    <input id="step-by-step-mode" data-toggle="toggle" type="checkbox">
+                  </div>
+                  <button id="back-step" type="button" class="col-md-2 btn btn-warning" disabled>
+                    Back
+                  </button>
+                  <button id="next-step" type="button" class="col-md-2 btn btn-primary" disabled>
+                    Next
+                  </button>
+                </div>
+                <div class="form-group">
+                  <label for="time" class="col-md-6 control-label">
+                    Time between each refresh (sec.)
+                  </label>
+                  <div class="col-md-6">
+                    <input id="time" type="text" class="form-control" value="10">
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div id="footer">
+      Developed by Benoît Duhoux, @UCLouvain, 2017-2019
+    </div>
+
+    <script type="text/javascript" src="js/dist/jquery.min.js"></script>
+    <script type="text/javascript" src="js/dist/bootstrap.min.js"></script>
+    <script type="text/javascript" src="js/dist/bootstrap-toggle.min.js"></script>
+    <script type="text/javascript" src="node_modules/lodash.clonedeep/index.js"></script>
+    <script type="text/javascript" src="node_modules/vis-network/dist/vis-network.min.js"></script>
+    <script type="text/javascript" src="js/logic/EntityCounter.js"></script>
+    <script type="text/javascript" src="js/Utils.js"></script>
+    <script type="text/javascript" src="js/Constants.js"></script>
+    <script type="text/javascript" src="js/ui/UINode.js"></script>
+    <script type="text/javascript" src="js/ui/UIContextNode.js"></script>
+    <script type="text/javascript" src="js/ui/UIActiveContextNode.js"></script>
+    <script type="text/javascript" src="js/ui/UIInactiveContextNode.js"></script>
+    <script type="text/javascript" src="js/ui/UISelectedFeatureNode.js"></script>
+    <script type="text/javascript" src="js/ui/UIFeatureNode.js"></script>
+    <script type="text/javascript" src="js/ui/UIActiveFeatureNode.js"></script>
+    <script type="text/javascript" src="js/ui/UIInactiveFeatureNode.js"></script>
+    <script type="text/javascript" src="js/ui/UIClassNode.js"></script>
+    <script type="text/javascript" src="js/ui/UIEdge.js"></script>
+    <script type="text/javascript" src="js/ui/UISelectionEdge.js"></script>
+    <script type="text/javascript" src="js/ui/UIActivationEdge.js"></script>
+    <script type="text/javascript" src="js/ui/UIDeactivationEdge.js"></script>
+    <script type="text/javascript" src="js/ui/UIAlterationEdge.js"></script>
+    <script type="text/javascript" src="js/ui/UIUnalterationEdge.js"></script>
+    <script type="text/javascript" src="js/ui/UIInheritanceEdge.js"></script>
+    <script type="text/javascript" src="js/ui/UILegend.js"></script>
+    <script type="text/javascript" src="js/ui/UIModels.js"></script>
+    <script type="text/javascript" src="js/logic/Context.js"></script>
+    <script type="text/javascript" src="js/logic/Feature.js"></script>
+    <script type="text/javascript" src="js/logic/AlteredClass.js"></script>
+    <script type="text/javascript" src="js/logic/ActiveContexts.js"></script>
+    <script type="text/javascript" src="js/logic/SelectedFeatures.js"></script>
+    <script type="text/javascript" src="js/logic/IndexedActivatedFeatures.js"></script>
+    <script type="text/javascript" src="js/logic/ActiveFeatures.js"></script>
+    <script type="text/javascript" src="js/logic/System.js"></script>
+    <script type="text/javascript" src="js/logic/Models.js"></script>
+    <script type="text/javascript" src="js/ui/consoleMessages.js"></script>
+    <script type="text/javascript" src="js/Visualiser.js"></script>
+    <script type="text/javascript" src="js/ui/interaction.js"></script>
+    <script type="text/javascript" src="js/Websocket.js"></script>
+  </body>
+
+</html>

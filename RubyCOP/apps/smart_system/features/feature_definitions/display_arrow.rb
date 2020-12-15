@@ -6,7 +6,7 @@ module DisplayArrows
       adapts_class :KeysModel
 
       def initialize()
-        
-    end
+        proceed()  
+      end
     end
 end

@@ -25,6 +25,7 @@ class SmartSystem # TODO rename the class
     @keys_model = KeysModel.new()
     @keys_view = KeysView.new(@keys_model)
     @keys_view.main_window = @main_window
+    @keys_view.create_keys_layout()
     @main_window.show(PLACEMENT_SCREEN)
   end
 
