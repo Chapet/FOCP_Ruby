@@ -36,8 +36,8 @@ class AppFeatureDeclaration < FeatureDeclaration
 		@display_additional_keys_feature = Feature.new('DisplayAddKeys', ['KeysModel']) # Classes dans le skeleton 
 
 		
-		@display_keys_feature.add_relation(:Mandatory, [@display_calculator_feature])
-		@display_keys_feature.add_relation(:Optional, [@display_additional_keys_feature])
+		@display_keys_feature.add_relation(:Alternative, [@display_calculator_feature,@display_additional_keys_feature])
+		#@display_keys_feature.add_relation(:Alternative, [@display_additional_keys_feature])
 	end
 
 	def _define_features_about_memory()
