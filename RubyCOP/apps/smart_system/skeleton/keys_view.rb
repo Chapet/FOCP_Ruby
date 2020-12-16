@@ -47,12 +47,12 @@ class KeysView < FBCOObject
         @button_9.resize(pixels,pixels)
         @button_plus.resize(pixels,pixels)
 
-        """puts(button_7.baseColor)
-        button_7.baseColor=Fox.FXRGB(0,0,0)
-        button_7.borderColor=Fox.FXRGB(250,250,250)
-        h_frame_2.borderWidth=5
-        puts(button_7.baseColor)
-        @main_window.repaint()"""
+        puts(@button_7.baseColor)
+        @button_7.baseColor=Fox.FXRGB(0,0,0)
+        @button_7.borderColor=Fox.FXRGB(250,250,250)
+        #@button_7.borderWidth=5
+        puts(@button_7.baseColor)
+        #@main_window.repaint()
 
         @button_7.connect(SEL_COMMAND){
           |sender, sel, checked|
