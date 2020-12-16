@@ -34,7 +34,7 @@ class KeysView < FBCOObject
       unless @has_title
 
         h_frame_1 = FXUI::Factory.create_ui_object(:HorizontalFrame, @main_window, :opts => LAYOUT_FILL_X)
-        @calculator_screen = FXUI::Factory.create_widget(:Label,h_frame_1,"computation will render here",:opts => LAYOUT_FILL_X|JUSTIFY_CENTER_X)
+        @calculator_screen = FXUI::Factory.create_widget(:Label,h_frame_1,"",:opts => LAYOUT_FILL_X|JUSTIFY_CENTER_X)
       ###
         h_frame_2 = FXUI::Factory.create_ui_object(:HorizontalFrame, @main_window, :opts => LAYOUT_FILL_X)
         @button_7 = FXUI::Factory.create_widget(:Button,h_frame_2,"7",:opts=>LAYOUT_FIX_WIDTH|LAYOUT_FIX_HEIGHT|JUSTIFY_CENTER_X|LAYOUT_CENTER_X)
@@ -193,6 +193,13 @@ class KeysView < FBCOObject
 
     def do_on_click(symbol)
       puts(symbol)
+      if symbol.eql?("=")
+        @calculator_screen.label = preResult(@calculator_screen.label)
+      elsif symbol.eql?("eff")
+        @calculator_screen.label = ""
+      else
+        @calculator_screen.label = @calculator_screen.label.concat(symbol)
+      end
     end
   
   end

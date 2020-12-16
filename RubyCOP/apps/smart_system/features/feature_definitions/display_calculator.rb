@@ -13,21 +13,28 @@ module DisplayCalculator
     attr_accessor :array_calcu
     attr_accessor :operateurs
 
-    def initialize()
-      proceed()
+    def initialize() #remove le proceed
       @array_calcu = []
       @operateurs = ['+','-','*','/']
     end
 
     def append(n)
       if operateurs.includes?(array_calcu.last) && operateurs.includes?(n)  
-        # Display un truc ERROR
+        puts("error append in display_calculator")
       else 
         @array_calcu.push(n)
       end
     end
+    
+    def preResult(stringInput)
+      i = 0
+      until i == stringInput.size
+        append(stringInput[i])
+      end
+      return resultArray().to_s
+    end
 
-    def resultArray()
+    def resultArray() # preResult qui va append tout au array_calcu puis l'envoyer au result
       result = 0
       while !@array_calcu.empty?
         number1 = ""
