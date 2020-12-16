@@ -21,8 +21,8 @@ class AppFeatureDeclaration < FeatureDeclaration
 		_define_features_about_memory()
 		_define_features_about_size()
 
-		@root_feature.add_relation(:Mandatory, [@display_keys_feature,@display_size_feature]) # mandatory et remove arrows
-		@root_feature.add_relation(:Optional, [@display_arrows_feature])
+		@root_feature.add_relation(:Mandatory, [@display_keys_feature,@display_size_feature,@display_memory_feature])
+		#@root_feature.add_relation(:Optional, [@display_arrows_feature])
 	end
 
 	private 
@@ -32,14 +32,19 @@ class AppFeatureDeclaration < FeatureDeclaration
 
 
 		@display_calculator_feature = Feature.new('DisplayCalculator', ['KeysModel', 'KeysView'])
-		@display_additional_keys_feature = Feature.new('DisplayAddKeys', ['KeysModel', 'KeysView']) # Classes dans le skeleton 
+		@display_additional_keys_feature = Feature.new('DisplayAddKeys', ['KeysModel', 'KeysView'])
 
 		
 		@display_keys_feature.add_relation(:Alternative, [@display_calculator_feature,@display_additional_keys_feature])
 	end
 
 	def _define_features_about_memory()
+		@display_memory_feature = AbstractFeature.new('DisplayMemory')
+		
 		@display_arrows_feature = Feature.new('DisplayArrows', ['KeysModel', 'KeysView'])
+		@undisplay_arrows_feature = @display_arrows_feature = Feature.new('UnDisplayArrows', ['KeysModel', 'KeysView'])
+
+		@display_memory_feature.add_relation(:Alternative, [@display_arrows_feature,@undisplay_arrows_feature])
 	end
 
 	def _define_features_about_size()
@@ -47,7 +52,7 @@ class AppFeatureDeclaration < FeatureDeclaration
 
 
 		@set_scale_high_feature = Feature.new('ScaleHigh', ['KeysModel', 'KeysView'])
-		@set_scale_low_feature = Feature.new('ScaleLow', ['KeysModel', 'KeysView']) # Classes dans le skeleton 
+		@set_scale_low_feature = Feature.new('ScaleLow', ['KeysModel', 'KeysView'])
 
 		
 		@display_size_feature.add_relation(:Alternative, [@set_scale_high_feature, @set_scale_low_feature])

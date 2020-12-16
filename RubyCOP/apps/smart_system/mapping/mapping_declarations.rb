@@ -47,10 +47,16 @@ class AppMappingDeclaration < MappingDeclaration
             #############################################################################################
                 
             [
-                 AppContextDeclaration.instance.exam_usage_context()
+                 AppContextDeclaration.instance.normal_usage_context()
             ] =>
             [
                 AppFeatureDeclaration.instance.display_arrows_feature()
+            ]
+            [
+                 AppContextDeclaration.instance.exam_usage_context()
+            ] =>
+            [
+                AppFeatureDeclaration.instance.undisplay_arrows_feature()
             ]
         }
     end

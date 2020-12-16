@@ -16,6 +16,28 @@ module DisplayCalculator
     def initialize(keys_model) #remove le proceed
       @array_calcu = []
       @operateurs = ['+','-','*','/']
+      @result_mem = []
+      @cur = 0
+    end
+
+    def getMemoryResult(symbol)
+      if symbol.eql?("up")
+        if @cur != 0
+          @cur = @cur - 1
+          return @result_mem.fetch(@cur)
+        else 
+          return ""
+        end
+      elsif symbol.eql?("down")
+        if @cur != @result_mem.size
+          @cur = @cur + 1
+          return @result_mem.fetch(@cur)
+        else 
+          return ""
+        end
+      else
+        return "error Mem"
+      end
     end
 
     def append(n)
@@ -65,6 +87,8 @@ module DisplayCalculator
         end
 
       end
+      @result_mem.push(result)
+      @cur = @result_mem.
       return result 
     end
   end
