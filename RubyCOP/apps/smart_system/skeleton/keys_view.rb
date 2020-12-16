@@ -30,12 +30,35 @@ class KeysView < FBCOObject
       @button_equal.resize(pixels,pixels)
       @button_mult.resize(pixels,pixels) 
     end
+
+    def resize_arrows(pixels)
+      @button_up.resize(pixels,pixels)
+      @button_down.resize(pixels,pixels)
+    end
   
     def create_keys_layout(pixels)
       unless @has_title
 
         h_frame_1 = FXUI::Factory.create_ui_object(:HorizontalFrame, @main_window, :opts => LAYOUT_FILL_X)
         @calculator_screen = FXUI::Factory.create_widget(:Label,h_frame_1,"",:opts => LAYOUT_FILL_X|JUSTIFY_CENTER_X)
+        @button_up = FXUI::Factory.create_widget(:Button,h_frame_1,"up",:opts => LAYOUT_FIX_WIDTH|LAYOUT_FIX_HEIGHT|JUSTIFY_CENTER_X|LAYOUT_CENTER_X)
+        @button_down = FXUI::Factory.create_widget(:Button,h_frame_1,"down",:opts => LAYOUT_FIX_WIDTH|LAYOUT_FIX_HEIGHT|JUSTIFY_CENTER_X|LAYOUT_CENTER_X)
+
+        @button_up.resize(50,50)
+        @button_down.resize(50,50)
+
+        @button_up.connect(SEL_COMMAND){
+          |sender, sel, checked|
+          if checked 
+            do_on_click("up")
+          end
+        }
+        @button_down.connect(SEL_COMMAND){
+          |sender, sel, checked|
+          if checked 
+            do_on_click("down")
+          end
+        }
       ###
         h_frame_2 = FXUI::Factory.create_ui_object(:HorizontalFrame, @main_window, :opts => LAYOUT_FILL_X)
         @button_7 = FXUI::Factory.create_widget(:Button,h_frame_2,"7",:opts=>LAYOUT_FIX_WIDTH|LAYOUT_FIX_HEIGHT|JUSTIFY_CENTER_X|LAYOUT_CENTER_X)
@@ -47,13 +70,6 @@ class KeysView < FBCOObject
         @button_8.resize(pixels,pixels)
         @button_9.resize(pixels,pixels)
         @button_plus.resize(pixels,pixels)
-
-        """puts(@button_7.baseColor)
-        @button_7.baseColor=Fox.FXRGB(0,0,0)
-        @button_7.borderColor=Fox.FXRGB(250,250,250)
-        @button_7.borderWidth=5
-        puts(@button_7.baseColor)
-        @main_window.repaint()"""
 
         @button_7.connect(SEL_COMMAND){
           |sender, sel, checked|
@@ -198,7 +214,9 @@ class KeysView < FBCOObject
         @calculator_screen.text = preResult(@calculator_screen.text)
       elsif symbol.eql?("eff")
         @calculator_screen.text = ""
-      else
+      elsif symbol.eql?("up") || symbol.eql?("down")
+        @calculator_screen.text = getMemoryResult(symbol)
+      else # digit or operator
         @calculator_screen.text = @calculator_screen.text.concat(symbol)
       end
     end
