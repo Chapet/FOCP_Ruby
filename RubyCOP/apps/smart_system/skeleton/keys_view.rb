@@ -10,8 +10,10 @@ class KeysView < FBCOObject
     def update(frame) # à mettre dans les features
     end
 
-    def resize_buttons(pixels)
+    def resize_buttons(pixels, size_font)
       @button_7.resize(pixels,pixels)
+      puts("helvetica [bitstream],"+ size_font + ",bold,italic,normal,iso8859-1,0")
+      @button_7.font.setFont("helvetica [bitstream],"+ size_font + ",bold,italic,normal,iso8859-1,0")
       @button_8.resize(pixels,pixels)
       @button_9.resize(pixels,pixels)
       @button_plus.resize(pixels,pixels)

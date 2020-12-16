@@ -11,9 +11,7 @@ class SmartSystem # TODO rename the class
       # TODO rename the variable "smart_system"
       smart_system = FXUI::Factory.create_app() do
         |app|
-        puts("hey")
         SmartSystem.new(app) # TODO use the correct classname
-        puts("yo")
       end
       smart_system.run()
     end
@@ -25,7 +23,6 @@ class SmartSystem # TODO rename the class
   def initialize(app)
     @main_window = FXUI::Factory.create_main_window(app, "Smart System", app_width(), app_height()) # TODO give another title of your system
     @keys_model = KeysModel.new()
-    puts("coucou")
     @keys_view = KeysView.new(@keys_model)
     @keys_view.main_window = @main_window
     @keys_view.create_keys_layout(100)

@@ -11,8 +11,8 @@ module ScaleLow
     def initialize(keys_model)
     end
 
-    def resize_buttons(pixels=100)
-      proceed(pixels) 
+    def resize_buttons(pixels=100, size_font="120")
+      proceed(pixels,size_font) 
     end
 
     def update(frame)
