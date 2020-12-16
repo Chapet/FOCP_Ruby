@@ -12,7 +12,8 @@ module ScaleHigh
     end
 
     def resize_buttons(pixels=200)
-      proceed(pixels) 
+      proceed(pixels)
+      #KeysView.button_7.resize(300,300) 
     end
 
     def update(frame)

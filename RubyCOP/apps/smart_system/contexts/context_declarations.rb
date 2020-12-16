@@ -18,8 +18,8 @@ class AppContextDeclaration < ContextDeclaration
 		_define_usage_context()
 		_define_mode_context()
 
-		@root_context.add_relation(:Optional, [@mode_context, @user_context, @exam_usage_context]) # mandatory et remove exam
-		#@root_context.add_relation(:Optional, [@exam_usage_context])
+		@root_context.add_relation(:Mandatory, [@mode_context, @user_context]) # mandatory et remove exam
+		@root_context.add_relation(:Optional, [@exam_usage_context])
 	end
 
 	private
@@ -28,7 +28,7 @@ class AppContextDeclaration < ContextDeclaration
 		@mode_context = AbstractContext.new('Mode')
 		@normal_mode_context = Context.new('NormalMode')
 		@scientific_mode_context = Context.new('ScientificMode')
-		#@mode_context.strategy_ico_mandatory_parent = DefaultEntityStrategyInCaseOfMandatoryParent.new(@normal_mode_context) # ICI LE CONTEXT 
+		@mode_context.strategy_ico_mandatory_parent = DefaultEntityStrategyInCaseOfMandatoryParent.new(@normal_mode_context) # ICI LE CONTEXT 
 		@mode_context.add_relation(:Alternative, [@normal_mode_context, @scientific_mode_context])
 	end
 
@@ -36,7 +36,7 @@ class AppContextDeclaration < ContextDeclaration
 		@user_context = AbstractContext.new('User')
 		@normal_user_context = Context.new('NormalUser')
 		@old_user_context = Context.new('OldUser')
-		#@user_context.strategy_ico_mandatory_parent = DefaultEntityStrategyInCaseOfMandatoryParent.new(@normal_user_context) # ICI LE CONTEXT 
+		@user_context.strategy_ico_mandatory_parent = DefaultEntityStrategyInCaseOfMandatoryParent.new(@normal_user_context) # ICI LE CONTEXT 
 		@user_context.add_relation(:Alternative, [@normal_user_context, @old_user_context])
 	end
 

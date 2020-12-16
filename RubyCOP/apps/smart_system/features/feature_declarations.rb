@@ -21,8 +21,8 @@ class AppFeatureDeclaration < FeatureDeclaration
 		_define_features_about_memory()
 		_define_features_about_size()
 
-		@root_feature.add_relation(:Optional, [@display_keys_feature,@display_size_feature, @display_arrows_feature]) # mandatory et remove arrows
-		#@root_feature.add_relation(:Optional, [@display_arrows_feature])
+		@root_feature.add_relation(:Mandatory, [@display_keys_feature,@display_size_feature]) # mandatory et remove arrows
+		@root_feature.add_relation(:Optional, [@display_arrows_feature])
 	end
 
 	private 

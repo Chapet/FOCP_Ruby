@@ -1,5 +1,4 @@
 class KeysView < FBCOObject
-
     attr_accessor :main_window
   
     def initialize(keys_model)
@@ -47,12 +46,12 @@ class KeysView < FBCOObject
         @button_9.resize(pixels,pixels)
         @button_plus.resize(pixels,pixels)
 
-        puts(@button_7.baseColor)
+        """puts(@button_7.baseColor)
         @button_7.baseColor=Fox.FXRGB(0,0,0)
         @button_7.borderColor=Fox.FXRGB(250,250,250)
-        #@button_7.borderWidth=5
+        @button_7.borderWidth=5
         puts(@button_7.baseColor)
-        #@main_window.repaint()
+        @main_window.repaint()"""
 
         @button_7.connect(SEL_COMMAND){
           |sender, sel, checked|
@@ -194,11 +193,11 @@ class KeysView < FBCOObject
     def do_on_click(symbol)
       puts(symbol)
       if symbol.eql?("=")
-        @calculator_screen.label = preResult(@calculator_screen.label)
+        @calculator_screen.text = preResult(@calculator_screen.text)
       elsif symbol.eql?("eff")
-        @calculator_screen.label = ""
+        @calculator_screen.text = ""
       else
-        @calculator_screen.label = @calculator_screen.label.concat(symbol)
+        @calculator_screen.text = @calculator_screen.text.concat(symbol)
       end
     end
   
