@@ -20,6 +20,8 @@ class FBCOObjectSpace
 
   def add_object(object)
     klass = object.class
+    puts(object)
+    puts(klass)
     unless @objectspace.key?(klass)
       @objectspace[klass] = [object]
     else

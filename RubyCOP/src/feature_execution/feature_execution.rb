@@ -32,6 +32,7 @@ class FeatureExecution
   end
 
   def execute(to_execute)
+    puts(to_execute)
     global_features_to_execute = {
       :activate => [],
       :deactivate => []
@@ -50,7 +51,7 @@ class FeatureExecution
         raise
       end
     end
-
+    puts(Bootstrap.bootstrap_done?)
     if Bootstrap.bootstrap_done?()
       run_code_of_features(:prologue, global_features_to_execute[:activate])
     end
